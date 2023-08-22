@@ -696,13 +696,10 @@
                 // image_json = { "image": { "cmd": "inti", "width": 400, "height": 300, "color": epd.color, "rotation": 0 } };
                 image_json = JSON.stringify(image_json);
                 image_json_str = new Uint8Array(new TextEncoder("utf-8").encode(image_json));
-                console.log(image_json);
-                addLog(image_json);
                 await sendCommand(image_json_str, true);
                 receive_data2 = await epdCharacteristic_rx.readValue();
                 receive_data2 = new TextDecoder().decode(receive_data2);
                 console.log((receive_data2));
-
             }
             if (receive_data2 == "inti ok") {
                 for (let i = 0; i < value.length; i += step) {
@@ -726,11 +723,9 @@
                 if (type == (document.getElementById('dithering').value.startsWith('bwr') ? 'bwr' : 'bw')) {
                     image_json = { "image": { "cmd": "end", "checknum": checknum, "totalsize": (type == 'bw' ? 1 : 2) * value.length } }
                     image_json = JSON.stringify(image_json);
-                    console.log(image_json);
                     addLog(image_json);
                     image_json_str = new Uint8Array(new TextEncoder("utf-8").encode(image_json));
                     await sendCommand(image_json_str, true);
-
                 }
             }
         }
@@ -2786,16 +2781,7 @@
             document.getElementById("string1").value = loadData_set("string1");
             document.getElementById("string2").value = loadData_set("string2");
 
-            const ndef = new NDEFReader();
-            try {
-                ndef.write({
-                    records: [{ recordType: "url", data: "https://w3c.github.io/web-nfc/" }]
-                });
-            } catch {
-                console.log("Write failed :-( try again.");
-                addLog("Write failed :-( try again.");
-            };
-            addLog(records);
+
         }
     </script>
 </body>
