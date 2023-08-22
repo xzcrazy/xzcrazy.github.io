@@ -1,0 +1,2803 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8" name="viewport"
+        content="width=600,initial-scale=0.7, minimum-scale=0.5, maximum-scale=2.0,user-scalable=no">
+    <title>XZCRAZY's Epaper</title>
+</head>
+
+<body>
+    <style>
+        #tool-box>* {
+            margin-right: 5px;
+        }
+
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        button {
+            padding: 2px;
+            margin: 2px;
+            display: inline-block;
+            width: 120px;
+            background: #ff6600;
+            border: 0;
+            margin: 0;
+            color: #fff;
+            font-weight: bold;
+            border-radius: 3px;
+            cursor: pointer;
+
+        }
+
+        body {
+            padding: 20px;
+            overflow-y: auto;
+            background: #d6c8ff;
+            width: auto;
+        }
+
+        h3 {
+            width: auto;
+            text-align: left;
+        }
+
+
+        .container {
+            width: 450px;
+        }
+
+        /*top nav*/
+        .nav {
+            width: auto;
+            height: 50px;
+            background: #a393eb;
+
+
+        }
+
+        .nav1 {
+            width: auto;
+            text-align: center;
+            margin: 0 auto;
+            max-width: 450px;
+            height: 100%;
+
+        }
+
+        .topNav {
+            width: auto;
+            height: 35px;
+            color: white;
+            margin: auto;
+            margin-left: 50px;
+            /*line-height: 50px;*/
+            padding-top: 12px;
+            padding-bottom: 12px;
+        }
+    </style>
+    <style>
+        ul {
+            list-style: none;
+        }
+
+        /*top nav*/
+        .nav {
+            width: auto;
+            height: 50px;
+            background: #a393eb;
+        }
+
+        .topNav {
+            width: 450px;
+            height: 26px;
+            color: white;
+            margin: auto;
+            /*line-height: 50px;*/
+            padding-top: 12px;
+            padding-bottom: 12px;
+        }
+
+        .topNav h3 {
+            float: left;
+        }
+
+        .topNav input {
+            float: right;
+            width: 280px;
+            height: 24px;
+            box-shadow: 1px 1px 10px #dfe1e1 inset;
+            border-radius: 10px;
+        }
+
+        /*todo list*/
+        .todo {
+            width: 100%;
+            height: 100%;
+        }
+
+        .lists {
+            width: 450px;
+            height: 100%;
+            padding: 20px 0 10px 0;
+            margin: auto;
+        }
+
+        .todoNav {
+            width: 450px;
+            height: 30px;
+        }
+
+        .title1 {
+            width: 120px;
+            height: 18px;
+            font-size: 18px;
+            font-weight: bold;
+            color: black;
+            float: left;
+            line-height: 18px;
+            /* margin-top: 20px;
+    margin-bottom: 10px;*/
+
+        }
+
+        .todoCount {
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            font-size: 13px;
+            font-weight: bold;
+            color: black;
+            float: right;
+            text-align: center;
+            line-height: 18px;
+            background: #a393eb;
+            /*margin-top: 20px;
+    margin-bottom: 10px;*/
+        }
+
+        .todoList {
+            width: 450px;
+        }
+
+        .todoList ul {
+            width: 450px;
+            margin: auto;
+        }
+
+        .todoList li {
+            width: 437px;
+            height: 30px;
+            padding: 0 5px;
+            margin: 5px 0;
+            background: white;
+            line-height: 30px;
+            border-top-left-radius: 5px;
+            border-bottom-left-radius: 5px;
+            border-left: 3px solid #0b423e;
+            color: #a393ebff;
+        }
+
+
+
+        /*site foot*/
+        .siteFoot {
+            width: auto;
+            height: 100%;
+        }
+
+        .foot {
+            width: auto;
+            height: 30px;
+            margin: auto;
+            text-align: center;
+            line-height: 30px;
+        }
+
+
+
+
+        .content {
+            width: 130px;
+            height: 27px;
+            color: black;
+            font-size: 15px;
+            background: white;
+            line-height: 27px;
+            border: none;
+            width: 300px;
+            float: left;
+        }
+
+        .content_a {
+            width: 130px;
+            height: 27px;
+            color: black;
+            font-size: 15px;
+            background: white;
+            line-height: 27px;
+            border: none;
+            float: left;
+        }
+
+        .content_b {
+            height: 27px;
+            color: black;
+            font-size: 15px;
+            background: white;
+            line-height: 27px;
+            border: none;
+            float: left;
+        }
+
+        .content1 {
+            width: auto;
+            height: 27px;
+            color: black;
+            font-size: 15px;
+            background: white;
+            line-height: 27px;
+            border: none;
+
+        }
+
+        .content2 {
+            width: auto;
+            height: 27px;
+            color: black;
+            font-size: 15px;
+            background: white;
+            line-height: 27px;
+            border: none;
+        }
+
+        .content3 {
+            width: auto;
+            height: 27px;
+            color: black;
+            font-size: 15px;
+            background: white;
+            line-height: 27px;
+            border: none;
+        }
+
+
+
+        .content:hover {
+            border: 1px solid skyblue;
+        }
+
+        .listSpan {
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            font-size: 13px;
+            font-weight: bold;
+            color: black;
+            float: right;
+            text-align: center;
+            line-height: 18px;
+            background: #a393eb;
+            margin-top: 6px;
+        }
+
+        .listSpan:hover {
+            cursor: pointer;
+        }
+
+        .checkBox {
+            width: 18px;
+            height: 18px;
+            margin-top: 8px;
+        }
+
+
+
+
+        .content_text {
+
+            width: 450px;
+            height: auto;
+            line-height: 25px;
+            word-wrap: break-word;
+            word-break: break-all;
+            overflow: hidden;
+            font-size: 14px;
+            color: #323232;
+            font-family: "微软雅黑";
+            background: white;
+
+        }
+
+
+        /* .button {
+            width: 120px;
+            background: #ff6600;
+            border: 0;
+            margin: 0;
+            padding: 5px 20px;
+            color: #fff;
+            font-weight: bold;
+            border-radius: 3px;
+            cursor: pointer;
+        } */
+
+        .content_status {
+            width: 150px;
+            height: 54px;
+            text-align: center;
+            color: black;
+            font-size: 15px;
+            background: white;
+            line-height: 27px;
+            border: none;
+            background: none;
+        }
+    </style>
+    <div class="container">
+        <div class="nav">
+            <div class="topNav">
+                <h2>&nbsp&nbsp XZCRAZY's Epaper</h2>
+            </div>
+        </div>
+        <br>
+
+        <div class="nav1">
+            <button id="connectbutton" type="button" onclick="preConnect();">连接</button>
+            <button type="button" onclick="reConnect();">重新连接</button>
+            <button type="button" onclick="document.getElementById('log').innerHTML = '';">清空日志</button>
+        </div>
+        <br>
+        <div class="nav1">
+            <ul>
+                <tr>
+                    <td><label><input type="radio" name="page_select" value="page_select_notelist"
+                                id="page_select_notelist_id" checked="checked"
+                                onchange='page_select()'>&nbsp&nbsp备忘录&nbsp&nbsp</label></td>
+                    <td><label> <input type="radio" name="page_select" value="page_select_qrcode"
+                                id="page_select_qrcode_id" onchange='page_select()'>&nbsp&nbspQRCODE&nbsp&nbsp</label>
+                    </td>
+                    <td><label> <input type="radio" name="page_select" value="page_select_image"
+                                id="page_select_notelist_id" onchange='page_select()'>&nbsp&nbsp图像&nbsp&nbsp</label>
+                    </td>
+                </tr>
+            </ul>
+        </div>
+    </div>
+    <br>
+
+    <div class="container" id="page_select_notelist">
+        <div class="nav">
+            <div class="topNav">
+                <h3>&nbsp&nbspTodoList</h3>
+                <form id="form" action='javascript:postaction("todoList")' method='post'>
+                    <input type="text" name="todoList" id="inputTodo" placeholder="输入内容" required="required"
+                        autocomplete="off">
+                </form>
+            </div>
+        </div>
+        <!-- top nav   end -->
+        <!-- todo list   start -->
+        <div class="todo">
+            <div class="lists">
+                <div class="todoNav" id="todoNav">
+                    <span class="title1">备忘录</span>
+                    <span class="todoCount" id="todoCount">0</span>
+                </div>
+                <div class="todoList">
+                    <ul id="todoList">
+                        <!-- 动态添加li -->
+                        <!-- <li><input type="checkbox" name="" checked="checked">事项内容<span>-</span></li> -->
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!-- todo list   end -->
+        <!-- <br> -->
+        <div align="center">
+            <table wihth="450px">
+                <tr>
+                    <td>
+                        <div align="center"> <input width="auto" class="content_status" id="content_status"></input>
+                            <br>
+                            <button type="button" class="button" style='float:center' id="button_ok">OK</button>
+                        </div>
+                    </td>
+                    <td>
+                        <img height="100px" width="100px"
+                            src="data:image/png;base64,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">
+                        </img>
+                    </td>
+                    <td>
+                        <div align="center"><input width="auto" class="content_status" id="content_status2"></input>
+                            <br>
+                            <button type="button" class="button" style='float:center' ; id="button_send">Send</button>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+        <!-- setting   start -->
+        <div class="todo">
+            <div class="lists">
+                <div class="todoNav" id="todoNav">
+                    <span class="title1">天气设置</span>
+                </div>
+                <div class="todoList">
+                    <ul id="setting">
+                        <li>
+                            <p style='float:left;'>日&nbsp&nbsp期&nbsp&nbsp：&nbsp&nbsp</p>
+                            <input class='content_a' type='date' id="date" onchange='update_set("date")'>
+                            <p style='float:left;'>&nbsp&nbsp今天&nbsp</p>
+                            <input class='content_b' type='Checkbox' id="today_select"
+                                onchange='update_checkbox("today_select")'>
+                            <input class='content_b' type="Checkbox" style='float:right;' id='date_select'
+                                onchange="update_checkbox('date_select')">
+                        </li>
+                        <ul id="setting">
+                            <li>
+                                <p style='float:left;'>城&nbsp&nbsp市&nbsp&nbsp：&nbsp&nbsp</p>
+                                <input class='content' type='text' id="city" onchange='update_set("city")'>
+                                <input class='content_b' type="Checkbox" style='float:right;' id='city_select'
+                                    onchange='update_checkbox("city_select")'>
+                            </li>
+                            <li>
+                                <p style='float:left;'>LOGO&nbsp：&nbsp&nbsp</p>
+                                <input class='content' type='text' id="logo" onchange='update_set("logo")'>
+                            </li>
+
+                        </ul>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container" id="page_select_qrcode">
+        <div class="todo">
+            <div class="nav1">
+                <button type="button" class="button" ; id="button_send_qrcode">Send</button>
+            </div>
+            <div class="lists">
+                <div class="todoNav" id="todoNav">
+                    <span class="title1">QRcode设置</span>
+                </div>
+                <div class="todoList">
+                    <ul id="setting">
+                        <li style='height: 100px;'>
+                            <p style='float:left; height: 100px;    align-items: center;
+                            display: inline-flex;'>
+                                QRcode：&nbsp&nbsp</p>
+                            <textarea class='content' style=' height: 100px; width: 330px;' id="qrcode"
+                                onchange='update_set("qrcode")'></textarea>
+                            <!-- <input class='content' style='word-break:break-word; height: 100%;max-height:300px;' -->
+                            <!-- type='text' id="qrcode" onchange='update_set("qrcode")'> -->
+                            <!-- <input class='content_b' type="Checkbox" style='float:right;' id='qrcode_select'
+                                onchange="update_checkbox('qrcode_select')"> -->
+                        </li>
+                        <ul id="setting">
+                            <li>
+                                <p style='float:left;'>竖排文字：&nbsp&nbsp</p>
+                                <input class='content' type='text' id="string1" onchange='update_set("string1")'>
+                            </li>
+                            <li>
+                                <p style='float:left;'>横排文字：&nbsp&nbsp</p>
+                                <input class='content' type='text' id="string2" onchange='update_set("string2")'>
+                            </li>
+
+                        </ul>
+
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+
+    <div class="container" id="page_select_image">
+        <div class="nav1">
+            <h3>上传图片到屏幕</h3>
+            <div>
+                <div style="margin: 0 10%;text-align: left;">
+                    <input type="file" id="image_file" onchange="update_image()" accept=".png,.jpg,.bmp,.webp,.jpeg"
+                        aria-label="222">
+                    <br>
+                    <table>
+                        <tr>
+                            <td>型号：</td>
+                            <td>
+                                <select id="epd_model" onchange="epd_select()">
+                                    <optgroup label="黑白">
+                                        <option value=epd_EPD154C1>1.54</option>
+                                    </optgroup>
+                                    <optgroup label="黑白红多色">
+                                        <option value="epd_EPD420Z96">4.2c</option>
+                                    </optgroup>
+                                </select>
+                            </td>
+                            <td>
+                                方向：
+                            </td>
+                            <td>
+                                <select id="rotate_id" onchange="rotate_select()">
+                                    <option value=0>0</option>
+                                    <option value=1>↻90</option>
+                                    <option value=2>180</option>
+                                    <option value=3>↺90</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                抖动算法：
+                            </td>
+                            <td>
+                                <select id="dithering" title="抖动算法" onchange="update_image(zoom_scale,false)">
+                                    <optgroup label="黑白">
+                                        <option value="level">色阶法</option>
+                                        <option value="bayer">bayer</option>
+                                        <option value="floydsteinberg">floydsteinberg</option>
+                                        <option value="Atkinson">Atkinson</option>
+                                        <option value="sketch">素描</option>
+                                    </optgroup>
+                                    <optgroup label="黑白红">
+                                        <option value="bwr_level">色阶法</option>
+                                        <option value="bwr_floydsteinberg">floydsteinberg</option>
+                                        <option value="bwr_Atkinson">Atkinson</option>
+                                    </optgroup>
+                                </select>
+                            </td>
+                            <td>
+                                阈值:
+                            </td>
+                            <td>
+                                <input type="number" max="255" min="0" value="125" id="threshold" aria-label="1">
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <!-- <br> -->
+            <button onclick="update_image()">重新加载</button>
+            <button onclick="upload_image()" style="font-weight: bold">立即上传到屏幕</button>
+        </div>
+        <br>
+        <div class="nav1" id="canvas-box ">
+            <canvas id="canvas" width="200" height="200"
+                style="z-index: 1 ;border: black solid 1px ;left:100px;top:100px;"></canvas>
+            <canvas id="canvas_temp" width="200" height="200"
+                style="z-index: -1 ;border: black solid 1px ;position: absolute;"></canvas>
+
+            <div id="cuttingBox" style="z-index: 2;position: absolute;"></div>
+        </div>
+        <!-- <div class="nav1">
+            <br>
+            <button onclick="upload_image()" style="font-weight: bold">立即上传到屏幕</button>
+            <br>
+        </div> -->
+        <!-- <br> -->
+    </div>
+
+    <div class="container"><!-- log -->
+        <div class="nav1" id="log-box">
+            <br>
+            <h3>日志</h3>
+            <div id="log"
+                style="text-align: left ; height: 100%;max-height:300px; overflow-y: scroll; border: solid 1px; padding: 10px;font-size: 10px;">
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <p align="center"> Copyright &copy; 2021 XZCRAZY <a style="color: #8c9796;" href="javascript:clear()">clear
+                all</a></p>
+    </div>
+
+    <script>//web bluetooth
+        let bleDevice;
+        let gattServer;
+        let epdService;
+        let epdCharacteristic_tx;
+        let epdCharacteristic_rx;
+        let reconnectTrys = 0;
+        const my_step = 450;
+
+        const SERVICE_UUID = 0x0001;
+        const CHARACTERISTIC_UUID_TX = 0x0002;
+        const CHARACTERISTIC_UUID_RX = 0x0003;
+
+
+        function delay(delayInms) {
+            return new Promise(resolve => {
+                setTimeout(() => {
+                    resolve(2);
+                }, delayInms);
+            });
+        }
+
+        function resetVariables() {
+            gattServer = null;
+            epdService = null;
+            epdCharacteristic_tx = null;
+            epdCharacteristic_rx = null;
+            document.getElementById("log").value = '';
+        }
+
+        async function handleError(error) {
+            console.log(error);
+            resetVariables();
+            if (bleDevice == null)
+                return;
+            if (reconnectTrys <= 5) {
+                reconnectTrys++;
+                await connect();
+            } else {
+                addLog("Was not able to connect, aborting");
+                reconnectTrys = 0;
+            }
+        }
+
+        async function sendCommand(cmd, withflag = false) {
+            if (epdCharacteristic_tx) {
+                if (withflag) {
+                    await epdCharacteristic_tx.writeValueWithResponse(cmd)
+                }
+                else {
+                    await epdCharacteristic_tx.writeValueWithoutResponse(cmd)
+                }
+            } else {
+                addLog('服务不可用。蓝牙连接上了吗？')
+            }
+        }
+    </script>
+    <script>//main
+        /**
+         * @brief 获取数据的校验和
+         *
+         * @return UINT8
+         */
+        function checksum(oldArray) {
+            let sum = 0;
+
+            oldArray.forEach((item) => {
+                sum += item;
+            })
+            sum &= 0xFF;
+            return sum;
+        }
+
+        var checknum;
+        async function sendBufferData(value, type) {
+
+            if (type == 'bw') {
+                checknum = 0;
+                checknum = checksum((value));
+            }
+            else if (type == 'bwr') {
+                checknum = (checknum + checksum((value))) & (0xff);
+            }
+            console.log(value);
+            // console.log("checknum000:", (value[0] + value[1] + value[2]) & 0xFF);
+            // console.log("checknum000:", checksum((value)));
+
+            addLog('<----------' + (type == 'bw' ? "Black" : "Red") + '---------->');
+            addLog(`开始发送图片模式:${type}, 大小 ${value.length}byte`);
+            console.log(value);
+            console.log(value.length);
+            value = Uint8ArrayToString(value);
+            const step = my_step;
+            console.log("checknum:", checknum);
+            let partIndex = 0;
+            let image_json;
+            if (type == 'bw') {
+                image_json = { "image": { "cmd": "inti", "width": epd.width, "height": epd.height, "color": epd.color } };
+                // image_json = { "image": { "cmd": "inti", "width": 400, "height": 300, "color": epd.color, "rotation": 0 } };
+                image_json = JSON.stringify(image_json);
+                image_json_str = new Uint8Array(new TextEncoder("utf-8").encode(image_json));
+                console.log(image_json);
+                addLog(image_json);
+                await sendCommand(image_json_str, true);
+                receive_data2 = await epdCharacteristic_rx.readValue();
+                receive_data2 = new TextDecoder().decode(receive_data2);
+                console.log((receive_data2));
+
+            }
+            if (receive_data2 == "inti ok") {
+                for (let i = 0; i < value.length; i += step) {
+                    step_size = (Math.min(step, value.length - i));
+                    addLog(`正在发送第${partIndex + 1}块. 块大小: ${step_size}byte. 起始位置: ${i}`);
+                    step_data = value.substring(i, i + step_size);
+                    image_json = "{\"image\":{\"color\":\"" + (type == 'bw' ? "black" : "red") + "\",\"size\":" + step_size + ",\"data\":\"" + step_data + "\"}}";
+                    image_json_array = toUint8Arr(image_json);
+                    if (i == 0) {
+                        addLog(image_json.substring(0, 50));
+                        console.log(image_json);
+                        console.log(image_json.length);
+
+                        console.log(image_json_array);
+                        console.log(image_json_array.length);
+                    }
+                    await sendCommand(image_json_array);
+                    partIndex += 1;
+
+                }
+                if (type == (document.getElementById('dithering').value.startsWith('bwr') ? 'bwr' : 'bw')) {
+                    image_json = { "image": { "cmd": "end", "checknum": checknum, "totalsize": (type == 'bw' ? 1 : 2) * value.length } }
+                    image_json = JSON.stringify(image_json);
+                    console.log(image_json);
+                    addLog(image_json);
+                    image_json_str = new Uint8Array(new TextEncoder("utf-8").encode(image_json));
+                    await sendCommand(image_json_str, true);
+
+                }
+            }
+        }
+        async function upload_image() {
+            const canvas = document.getElementById('canvas');
+            const startTime = new Date().getTime();
+            await sendBufferData(((canvas2bytes(canvas))), 'bw')
+            if (document.getElementById('dithering').value.startsWith('bwr')) {
+                // console.log("11111111");
+                await sendBufferData((canvas2bytes(canvas, 'bwr')), 'bwr')
+            }
+            addLog(`刷新完成，耗时${(new Date().getTime() - startTime) / 1000}s`);
+        }
+
+        function disconnect() {
+            resetVariables();
+            addLog('连接已断开.');
+            document.getElementById("connectbutton").innerHTML = '连接';
+        }
+
+        async function preConnect() {
+            if (gattServer != null && gattServer.connected) {
+                if (bleDevice != null && bleDevice.gatt.connected)
+                    bleDevice.gatt.disconnect();
+            } else {
+                reconnectTrys = 0;
+                bleDevice = await navigator.bluetooth.requestDevice({
+                    filters: [{ namePrefix: "XZ" }],
+                    // exclusionFilters: [{ name: "" }],
+                    optionalServices: [SERVICE_UUID, CHARACTERISTIC_UUID_TX, CHARACTERISTIC_UUID_RX],
+                    // acceptAllDevices: true
+                });
+                await bleDevice.addEventListener('gattserverdisconnected', disconnect);
+                try {
+                    await connect();
+                } catch (e) {
+                    await handleError(e);
+                }
+            }
+        }
+
+        async function reConnect() {
+            connectTrys = 0;
+            if (bleDevice != null && bleDevice.gatt.connected)
+                bleDevice.gatt.disconnect();
+            resetVariables();
+            addLog("重新连接");
+            setTimeout(async function () {
+                await connect();
+            }, 3000);
+        }
+
+        async function connect() {
+            if (epdCharacteristic_tx == null) {
+                addLog("正在连接: " + bleDevice.name);
+
+                gattServer = await bleDevice.gatt.connect();
+                addLog('> 找到GATT服务器');
+
+                epdService = await gattServer.getPrimaryService(SERVICE_UUID);
+                addLog('>  epdService 找到可用服务');
+
+                epdCharacteristic_tx = await epdService.getCharacteristic(CHARACTERISTIC_UUID_TX);
+                addLog('> epdCharacteristic_tx 服务已连接');
+
+                epdCharacteristic_rx = epdCharacteristic_tx;
+                // epdCharacteristic_rx = await epdService.getCharacteristic(CHARACTERISTIC_UUID_RX);
+                // addLog('> epdCharacteristic_rx 服务已连接');
+
+                receive_data = await epdCharacteristic_rx.readValue();
+                receive_data = new TextDecoder().decode(receive_data);
+                console.log((receive_data));
+                if (receive_data.length > 0) {
+                    await addLog('Receiveddata:' + receive_data);
+                }
+                await epdCharacteristic_rx.startNotifications();
+                if (epdCharacteristic_rx.properties.notify) {
+                    epdCharacteristic_rx.addEventListener(
+                        "characteristicvaluechanged",
+                        async (event) => {
+                            let receive_data = new TextDecoder().decode(event.target.value);
+                            console.log('Receiveddata:', receive_data);
+                            addLog('Receiveddata:' + receive_data);
+                        });
+                }
+                document.getElementById("connectbutton").innerHTML = '断开';
+            }
+        }
+
+        function addLog(logTXT) {
+            const today = new Date();
+            const time = ("0" + today.getHours()).slice(-2) + ":" + ("0" + today.getMinutes()).slice(-2) + ":" + ("0" + today
+                .getSeconds()).slice(-2) + " : ";
+
+            const dom = document.getElementById("log");
+
+            dom.innerHTML = time + logTXT + '<br>' + dom.innerHTML;
+            dom.scrollTop = 0;
+        }
+    </script>
+    <script>//canvas
+
+        let scaleWid = 1;
+        let scaleHei = 1;
+        touch_flag = 0;
+        var canvas_id = document.getElementById("canvas");
+        var zoom_scale = 1;
+        var zoom_flag = true;
+        var scale_min = 1;
+        var relX = 0;
+        var relY = 0;
+
+        async function update_image(zoom_scale_temp = 1, inti = true) {
+            zoom_scale = zoom_scale_temp;
+
+            dithering_select = document.getElementById("dithering").value;
+            saveData_set("dithering_select", dithering_select);
+            threshold_set = document.getElementById("threshold").value;
+            saveData_set("threshold_set", threshold_set);
+
+            const image_file = document.getElementById('image_file');
+            const canvas = document.getElementById("canvas");
+            const ctx = canvas.getContext("2d");
+            const canvas_temp = document.getElementById("canvas_temp");
+            const ctx_temp = canvas_temp.getContext("2d");
+            const image = new Image();
+            if (image_file.files.length > 0) {
+                const file = image_file.files[0];
+                image.src = URL.createObjectURL(file);
+            } else {
+                // image.src = './img/0.png';
+            }
+            image.onload = function (event) {
+                URL.revokeObjectURL(this.src);
+                scale_width = epd.width / image.width / zoom_scale;
+                scale_height = epd.height / image.height / zoom_scale;
+                scale_adjust = Math.min(scale_width, scale_height);
+
+                if (inti) {
+                    inti = false;
+                    zoom_flag = true;
+                    canvas_temp.setAttribute('width', epd.width / scale_adjust);
+                    canvas_temp.setAttribute('height', epd.height / scale_adjust);
+                    ctx_temp.fillStyle = 'white';
+                    ctx_temp.fillRect(0, 0, epd.width / scale_adjust, epd.height / scale_adjust);
+                    ctx.fillStyle = 'white';
+                    ctx.fillRect(0, 0, epd.width, epd.height);
+                    // image_x = (-image.width + epd.width / scale_adjust) / 2;
+                    // image_y = (-image.height + epd.height / scale_adjust) / 2;
+                    convas_x = (-image.width * scale_adjust + epd.width) / 2;
+                    convas_y = (-image.height * scale_adjust + epd.height) / 2;
+
+
+                    relX = 0;
+                    relY = 0;
+
+                    ctx_temp.drawImage(image, 0, 0, epd.width / scale_adjust, epd.height / scale_adjust, convas_x / scale_adjust, convas_y / scale_adjust,
+                        epd.width / scale_adjust, epd.height / scale_adjust);
+                    // ctx_temp.drawImage(image, 0, 0, epd.width / scale_adjust, epd.height / scale_adjust, convas_x, convas_y,
+                    //     epd.width, epd.height);
+                    // ctx_temp.scale(1 / scale_adjust, 1 / scale_adjust);
+                    imageData = ctx_temp.getImageData(0, 0, epd.width / scale_adjust, epd.height / scale_adjust);
+
+                    ctx.scale(1 * scale_adjust, 1 * scale_adjust);
+                    // ctx.putImageData(imageData, 0, 0, 0, 0, epd.width / scale_adjust, epd.height / scale_adjust);
+                    ctx.drawImage(canvas_temp, 0, 0);
+                    ctx.scale(1 / scale_adjust, 1 / scale_adjust);
+
+                    // ctx.drawImage(canvas, 0, 0, epd.width / scale_adjust, epd.height / scale_adjust, 0, 0, epd.width, epd.height);
+                    // ctx.scale(0.5, 0.5);
+                    // ctx.drawImage(canvas, 0, 0);
+                    // ctx.scale(1 / scale_adjust, 1 / scale_adjust);
+                }
+                else {
+                    imageData_temp = ctx_temp.getImageData(0, 0, epd.width / scale_adjust, epd.height / scale_adjust);
+                    ctx.fillStyle = 'white';
+                    ctx.fillRect(0, 0, epd.width, epd.height);
+                    ctx.scale(1 * scale_adjust, 1 * scale_adjust);
+                    ctx.drawImage(canvas_temp, relX / scale_adjust / zoom_scale, relY / scale_adjust / zoom_scale, epd.width / scale_adjust, epd.height / scale_adjust, 0, 0, epd.width / scale_adjust, epd.height / scale_adjust);
+                    ctx.scale(1 / scale_adjust, 1 / scale_adjust);
+                }
+                convert_dithering();
+            }
+        }
+
+        function convert_dithering() {
+            const canvas = document.getElementById('canvas');
+            const ctx = canvas.getContext("2d");
+            const mode = document.getElementById('dithering').value;
+            if (mode.startsWith('bwr')) {
+                ditheringCanvasByPalette(canvas, bwrPalette, mode);
+            } else {
+                dithering(ctx, canvas.width, canvas.height, parseInt(document.getElementById('threshold').value), mode);
+            }
+        }
+
+
+        canvas_id.addEventListener("touchstart", function (e) {
+            // console.log(e.type);
+            clientX = e.touches[0].pageX;
+            clientY = e.touches[0].pageY;
+
+            down(e);
+            canvas_id.addEventListener("touchmove", function (event) {
+                // console.log(event.type);		
+                clientX_M = event.touches[0].pageX;
+                clientY_M = event.touches[0].pageY;
+                move(event);
+
+                canvas_id.addEventListener("touchend", function (event) {
+                    // console.log(event.type);
+                    up(event);
+                }, false)
+            }, false)
+        }, false)
+
+
+        canvas_id.addEventListener("mousedown", function (e) {
+
+            // console.log(e.type);
+            clientX = e.pageX;
+            clientY = e.pageY;
+            // console.log("client", clientX, clientY);
+            down(e);
+            document.body.addEventListener("mousemove", function (event) {
+                // console.log(event.type);
+                clientX_M = event.pageX;
+                clientY_M = event.pageY;
+                move(event);
+                document.body.addEventListener("mouseup", function (event) {
+                    // console.log(event.type);
+                    // div_tailoringImgDiv.unbind("mousemove");
+                    up(event);
+                }, false)
+                document.body.addEventListener("mouseleave", function (event) {
+                    // console.log(event.type);
+                    // div_tailoringImgDiv.unbind("mousemove");
+                    up(event);
+                }, false)
+            }, false)
+        }, false)
+
+
+        function getElementOffset(element) {
+            var de = document.documentElement;
+            var box = element.getBoundingClientRect();
+            var top = box.top + window.pageYOffset - de.clientTop;
+            var left = box.left + window.pageXOffset - de.clientLeft;
+            return {
+                top: top,
+                left: left
+            };
+        }
+
+        function down(e) {
+            if (zoom_flag) {
+                console.log(e.type);
+                touch_flag = 1;
+                width = 0;
+                height = 0;
+            }
+        }
+
+        function move(event) {
+            if (touch_flag == 1) {
+                event.preventDefault();
+                console.log(event.type);
+                myCanvas = document.getElementById("canvas");
+                context = myCanvas.getContext("2d");
+
+                clientX_M = Math.max(Math.min(clientX_M, parseFloat(epd.width) + parentOffset.left),
+                    parentOffset.left);
+                clientY_M = Math.max(Math.min(clientY_M, parseFloat(epd.height) + parentOffset.top),
+                    parentOffset.top);
+
+                width = Math.abs(clientX - clientX_M);
+                height = Math.abs(clientY - clientY_M);
+
+                scale_min = Math.min(width / epd.width, height / epd.height);
+                height = epd.height * scale_min;
+                width = epd.width * scale_min;
+
+                var div_cuttingBox = document.getElementById("cuttingBox");
+
+                div_cuttingBox.style.width = width + "px";
+                div_cuttingBox.style.height = height + "px";
+
+                relX = clientX - ((clientX > clientX_M) ? width : 0) - parentOffset.left;
+                relY = clientY - ((clientY > clientY_M) ? height : 0) - parentOffset.top;
+
+                div_cuttingBox.style.left = parentOffset.left + "px";
+                div_cuttingBox.style.top = parentOffset.top + "px";
+                div_cuttingBox.style.borderTop = relY + "px solid rgba(3, 20, 32,0.3)";
+                div_cuttingBox.style.borderLeft = relX + "px solid rgba(3, 20, 32,0.3)";
+                div_cuttingBox.style.borderBottom = (epd.height - height - relY) + "px solid rgba(3, 20, 32,0.3)";
+                div_cuttingBox.style.borderRight = (epd.width - width - relX) + "px solid rgba(3, 20, 32,0.3)";
+                // console.log("imgHei - height - relY", imgHei, height, relY);
+                div_cuttingBox.style.display = "";
+            }
+        }
+
+        function up(event) {
+            if (touch_flag == 1) {
+                console.log(event.type);
+                touch_flag = 0;
+                let img = document.getElementById("canvas");
+                document.getElementById("cuttingBox").style.display = "none";
+                zoom_flag = false;
+                zoom_scale = scale_min * zoom_scale;                // console.log("zoom_scale:", zoom_scale);
+                update_image(zoom_scale, false);
+            }
+        }
+    </script>
+    <script>//dithering
+        const bwrPalette = [
+            [0, 0, 0, 255],
+            [255, 255, 255, 255],
+            [255, 0, 0, 255]
+        ]
+
+        const bwPalette = [
+            [0, 0, 0, 255],
+            [255, 255, 255, 255],
+        ]
+
+
+
+        function hexToRGB(h) {
+            let r = 0,
+                g = 0,
+                b = 0;
+            // 3 digits
+            if (h.length == 4) {
+                r = "0x" + h[1] + h[1];
+                g = "0x" + h[2] + h[2];
+                b = "0x" + h[3] + h[3];
+                // 6 digits
+            } else if (h.length == 7) {
+                r = "0x" + h[1] + h[2];
+                g = "0x" + h[3] + h[4];
+                b = "0x" + h[5] + h[6];
+            }
+
+            return { r: +r, g: +g, b: +b };
+        }
+
+        function RGBToHSL(R, G, B) {
+            let r = R / 255,
+                g = G / 255,
+                b = B / 255,
+                cmin = Math.min(r, g, b),
+                cmax = Math.max(r, g, b),
+                delta = cmax - cmin,
+                hue = 0,
+                sat = 0,
+                light = 0;
+            // get hue
+            if (delta == 0)
+                hue = 0;
+            else if (cmax == r)
+                hue = ((g - b) / delta) % 6;
+            else if (cmax == g)
+                hue = (b - r) / delta + 2;
+            else
+                hue = (r - g) / delta + 4;
+
+            hue = Math.round(hue * 60);
+
+            if (hue < 0)
+                hue += 360;
+            // get lightness and saturation
+            light = (cmax + cmin) / 2;
+            sat = delta == 0 ? 0 : delta / (1 - Math.abs(2 * light - 1));
+
+            sat = Math.round(sat * 100);
+            light = Math.round(light * 100);
+
+            return { h: hue, s: sat, l: light };
+        }
+
+        function dithering(ctx, width, height, threshold, type) {
+            const bayerThresholdMap = [
+                [15, 135, 45, 165],
+                [195, 75, 225, 105],
+                [60, 180, 30, 150],
+                [240, 120, 210, 90]
+            ];
+
+            const lumR = [];
+            const lumG = [];
+            const lumB = [];
+            for (let i = 0; i < 256; i++) {
+                lumR[i] = i * 0.299;
+                lumG[i] = i * 0.587;
+                lumB[i] = i * 0.114;
+            }
+            const imageData = ctx.getImageData(0, 0, width, height);
+
+            const imageDataLength = imageData.data.length;
+
+            // Greyscale luminance (sets r pixels to luminance of rgb)
+            for (let i = 0; i <= imageDataLength; i += 4) {
+                imageData.data[i] = Math.floor(lumR[imageData.data[i]] + lumG[imageData.data[i + 1]] + lumB[imageData.data[i + 2]]);
+            }
+
+
+
+
+            const w = imageData.width;
+            let newPixel, err;
+
+            for (let currentPixel = 0; currentPixel <= imageDataLength; currentPixel += 4) {
+
+                if (type === "level") {
+                    // No dithering
+                    imageData.data[currentPixel] = imageData.data[currentPixel] < threshold ? 0 : 255;
+                } else if (type === "bayer") {
+                    // 4x4 Bayer ordered dithering algorithm
+                    var x = currentPixel / 4 % w;
+                    var y = Math.floor(currentPixel / 4 / w);
+                    var map = Math.floor((imageData.data[currentPixel] + bayerThresholdMap[x % 4][y % 4]) / 2);
+                    imageData.data[currentPixel] = (map < threshold) ? 0 : 255;
+                } else if (type === "floydsteinberg") {
+                    // Floyda€"Steinberg dithering algorithm
+                    newPixel = imageData.data[currentPixel] < 129 ? 0 : 255;
+                    err = Math.floor((imageData.data[currentPixel] - newPixel) / 16);
+                    imageData.data[currentPixel] = newPixel;
+
+                    imageData.data[currentPixel + 4] += err * 7;
+                    imageData.data[currentPixel + 4 * w - 4] += err * 3;
+                    imageData.data[currentPixel + 4 * w] += err * 5;
+                    imageData.data[currentPixel + 4 * w + 4] += err * 1;
+                } else if (type == "Atkinson") {
+                    // Bill Atkinson's dithering algorithm
+                    newPixel = imageData.data[currentPixel] < threshold ? 0 : 255;
+                    err = Math.floor((imageData.data[currentPixel] - newPixel) / 8);
+                    imageData.data[currentPixel] = newPixel;
+                    imageData.data[currentPixel + 4] += err;
+                    imageData.data[currentPixel + 8] += err;
+                    imageData.data[currentPixel + 4 * w - 4] += err;
+                    imageData.data[currentPixel + 4 * w] += err;
+                    imageData.data[currentPixel + 4 * w + 4] += err;
+                    imageData.data[currentPixel + 8 * w] += err;
+                }
+                else if (type = 'sketch') {
+                    // data = imageData.data,
+                    color1ToRGB = hexToRGB("#ffffff");
+                    color2ToRGB = hexToRGB("#000000");
+                    let inHSL = RGBToHSL(imageData.data[currentPixel], imageData.data[currentPixel + 1], imageData.data[currentPixel + 2]),
+                        BWLight = Math.round(inHSL.l / 100),
+                        newR = 0;
+                    // newG = 0,
+                    // newB = 0;
+                    if (BWLight) {
+                        newR = color1ToRGB.r;
+                        // newG = color1ToRGB.g;
+                        // newB = color1ToRGB.b;
+                    } else {
+                        newR = color2ToRGB.r;
+                        // newG = color2ToRGB.g;
+                        // newB = color2ToRGB.b;
+                    }
+                    imageData.data[currentPixel] = newR;
+                    // imageData.data[currentPixel + 1] = newG;
+                    // imageData.data[currentPixel + 2] = newB;
+                    // console.log(newR, newG, newB)
+                }
+                // Set g and b pixels equal to r
+                imageData.data[currentPixel + 1] = imageData.data[currentPixel + 2] = imageData.data[currentPixel];
+            }
+
+            ctx.putImageData(imageData, 0, 0);
+        }
+
+        function bitmap_index(i, j, w) {
+            return 4 * w * j + 4 * i;
+        }
+
+        function rotateImage(image_old, direction) {
+
+            let width_temp = (direction & 1) ? image_old.height : image_old.width;
+            let height_temp = (direction & 1) ? image_old.width : image_old.height;
+            const image_new = new ImageData(width_temp, height_temp);
+            for (let j = 0; j < image_old.height; j++) {
+                for (let i = 0; i < image_old.width; i++) {
+                    for (let k = 0; k < 4; k++) {
+                        switch (direction) {
+                            case 0:
+                                image_new.data[bitmap_index(i, j, image_new.width) + k] = image_old.data[bitmap_index(i, j, image_old.width) + k];
+                                break;
+                            case 1:
+                                image_new.width = image_old.height;
+                                image_new.height = image_old.width;
+                                image_new.data[bitmap_index(j, image_old.width - i - 1, image_new.width) + k] = image_old.data[bitmap_index(i, j, image_old.width) + k];
+                                break;
+                            case 2:
+                                image_new.data[bitmap_index(image_old.width - i - 1, image_old.height - j - 1, image_new.width) + k] = image_old.data[bitmap_index(i, j, image_old.width) + k];
+                                break;
+                            case 3:
+                                image_new.width = image_old.height;
+                                image_new.height = image_old.width;
+                                image_new.data[bitmap_index(image_old.height - j - 1, i, image_new.width) + k] = image_old.data[bitmap_index(i, j, image_old.width) + k];
+                                break;
+                        }
+
+                    }
+                }
+            }
+            return image_new;
+        }
+
+        function canvas2bytes(canvas, type = 'bw') {
+
+            const ctx = canvas.getContext("2d");
+            const imageData_temp = ctx.getImageData(0, 0, canvas.width, canvas.height);
+
+            const imageData = new rotateImage(imageData_temp, (4 - (epd.rotation + epd.rotationSet) & 3));
+            console.log(imageData)
+            console.log(typeof (imageData))
+
+            const arr = [];
+            let buffer = [];
+
+            for (let y = 0; y < imageData.height; y++) {
+                for (let x = 0; x < imageData.width; x++) {
+                    const index = (imageData.width * 4 * y) + x * 4;
+                    if (type !== 'bwr') {
+                        buffer.push(imageData.data[index] > 0 && imageData.data[index + 1] > 0 && imageData.data[index + 2] > 0 ? 1 : 0);
+                    } else {
+                        buffer.push(imageData.data[index] > 0 && imageData.data[index + 1] === 0 && imageData.data[index + 2] === 0 ? 1 : 0);
+                    }
+
+                    if (buffer.length === 8) {
+                        arr.push(parseInt(buffer.join(''), 2));
+                        buffer = [];
+                    }
+                }
+            }
+            console.log(bytesToHex2(arr))
+            return arr;
+        }
+
+        function getColorDistance(rgba1, rgba2) {
+            const [r1, b1, g1] = rgba1;
+            const [r2, b2, g2] = rgba2;
+
+            const rm = (r1 + r2) / 2;
+
+            const r = r1 - r2;
+            const g = g1 - g2;
+            const b = b1 - b2;
+
+            return Math.sqrt((2 + rm / 256) * r * r + 4 * g * g + (2 + (255 - rm) / 256) * b * b);
+        }
+
+        function getNearColor(pixel, palette) {
+            let minDistance = 255 * 255 * 3 + 1;
+            let paletteIndex = 0;
+
+            for (let i = 0; i < palette.length; i++) {
+                const targetColor = palette[i];
+                const distance = getColorDistance(pixel, targetColor);
+                if (distance < minDistance) {
+                    minDistance = distance;
+                    paletteIndex = i;
+                }
+            }
+
+            return palette[paletteIndex];
+        }
+
+
+        function getNearColorV2(color, palette) {
+            let minDistanceSquared = 255 * 255 + 255 * 255 + 255 * 255 + 1;
+
+            let bestIndex = 0;
+            for (let i = 0; i < palette.length; i++) {
+                let rdiff = (color[0] & 0xff) - (palette[i][0] & 0xff);
+                let gdiff = (color[1] & 0xff) - (palette[i][1] & 0xff);
+                let bdiff = (color[2] & 0xff) - (palette[i][2] & 0xff);
+                let distanceSquared = rdiff * rdiff + gdiff * gdiff + bdiff * bdiff;
+                if (distanceSquared < minDistanceSquared) {
+                    minDistanceSquared = distanceSquared;
+                    bestIndex = i;
+                }
+            }
+            return palette[bestIndex];
+
+        }
+
+
+        function updatePixel(imageData, index, color) {
+            imageData[index] = color[0];
+            imageData[index + 1] = color[1];
+            imageData[index + 2] = color[2];
+            imageData[index + 3] = color[3];
+        }
+
+        function getColorErr(color1, color2, rate) {
+            const res = [];
+            for (let i = 0; i < 3; i++) {
+                res.push(Math.floor((color1[i] - color2[i]) / rate));
+            }
+            return res;
+        }
+
+        function updatePixelErr(imageData, index, err, rate) {
+            imageData[index] += err[0] * rate;
+            imageData[index + 1] += err[1] * rate;
+            imageData[index + 2] += err[2] * rate;
+        }
+
+        function ditheringCanvasByPalette(canvas, palette, type) {
+            palette = palette || bwrPalette;
+
+            const ctx = canvas.getContext('2d');
+            const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+            const w = imageData.width;
+
+            for (let currentPixel = 0; currentPixel <= imageData.data.length; currentPixel += 4) {
+                const newColor = getNearColorV2(imageData.data.slice(currentPixel, currentPixel + 4), palette);
+
+                if (type === "bwr_floydsteinberg") {
+                    const err = getColorErr(imageData.data.slice(currentPixel, currentPixel + 4), newColor, 16);
+
+                    updatePixel(imageData.data, currentPixel, newColor);
+                    updatePixelErr(imageData.data, currentPixel + 4, err, 7);
+                    updatePixelErr(imageData.data, currentPixel + 4 * w - 4, err, 3);
+                    updatePixelErr(imageData.data, currentPixel + 4 * w, err, 5);
+                    updatePixelErr(imageData.data, currentPixel + 4 * w + 4, err, 1);
+                } else if (type === "bwr_Atkinson") {
+                    const err = getColorErr(imageData.data.slice(currentPixel, currentPixel + 4), newColor, 8);
+
+                    updatePixel(imageData.data, currentPixel, newColor);
+                    updatePixelErr(imageData.data, currentPixel + 4, err, 1);
+                    updatePixelErr(imageData.data, currentPixel + 8, err, 1);
+                    updatePixelErr(imageData.data, currentPixel + 4 * w - 4, err, 1);
+                    updatePixelErr(imageData.data, currentPixel + 4 * w, err, 1);
+                    updatePixelErr(imageData.data, currentPixel + 4 * w + 4, err, 1);
+                    updatePixelErr(imageData.data, currentPixel + 8 * w, err, 1);
+                }
+                else if (type == "bwr_level") {
+                    updatePixel(imageData.data, currentPixel, newColor);
+                }
+            }
+            ctx.putImageData(imageData, 0, 0);
+        }
+    </script>
+    <script>//transfer
+        function hexToBytes(hex) {
+            for (var bytes = [], c = 0; c < hex.length; c += 2)
+                bytes.push(parseInt(hex.substr(c, 2), 16));
+            return new Uint8Array(bytes);
+        }
+
+        function hexToBytes(hex) {
+            for (var bytes = [], c = 0; c < hex.length; c += 2)
+                bytes.push(parseInt(hex.substr(c, 2), 16));
+            return new Uint8Array(bytes);
+        }
+
+        function bytesToHex(data) {
+            return new Uint8Array(data).reduce(
+                function (memo, i) {
+                    return memo + ("0" + i.toString(16)).slice(-2);
+                    // return memo + (i.toString(16)).slice(-2);
+                }, "");
+        }
+        function bytesToHex2(data) {
+            return new Uint8Array(data).reduce(
+                function (memo, i) {
+                    return memo + '0x' + ("0" + i.toString(16)).slice(-2) + ',';
+                    // return memo + (i.toString(16)).slice(-2);
+                }, "");
+        }
+
+
+        function intToHex(intIn, bytes = 4) {
+            return intIn.toString(16).padStart(bytes * 2, '0');
+        }
+
+
+        // hex转json字符串,16进制ASCII
+        function hextoString(hex) {
+            var arr = hex.split("")
+            var out = ""
+            for (var i = 0; i < arr.length / 2; i++) {
+                var tmp = "0x" + arr[i * 2] + arr[i * 2 + 1]
+                var charValue = String.fromCharCode(tmp);
+                out += charValue
+            }
+            return out
+        }
+
+        function toUint8Arr(str) {
+            const buffer = [];
+            // console.log(str.length);
+            // console.log(str.charAt(0));
+            let u8array_temp = [];
+            for (let i = 0; i < str.length; i++) {
+                u8array_temp.push(str.charCodeAt(i));
+            }
+            // console.log(u8array_temp);
+            u8array = new Uint8Array(u8array_temp);
+            // console.log(u8array);
+            return u8array;
+        }
+
+
+        function Uint8ArrayToString(fileData) {
+            var dataString = "";
+            for (var i = 0; i < fileData.length; i++) {
+                dataString += String.fromCharCode(fileData[i]);
+            }
+            return dataString
+        }
+
+    </script>
+    <script>//EPD
+        class EPD {
+            constructor(model, width, height, color, rotation, rotationSet = 0) {
+                this.model = model
+                this.width = width
+                this.height = height
+                this.color = color
+                this.rotation = rotation //初始
+                this.rotationSet = rotationSet //旋转
+            }
+        }
+        const epd_EPD154C1 = new EPD("epd_EPD154C1", 200, 200, 2, 0);
+        const epd_EPD420Z96 = new EPD("epd_EPD420Z96", 300, 400, 3, 1);
+            // const epd_EPD420Z96 = new EPD("epd_EPD420Z96", 400, 300, 3, 1);
+    </script>
+    <script>//page_select
+        function page_select() {
+            var value;
+            var radio = document.getElementsByName("page_select");
+            for (var i = 0; i < radio.length; i++) {
+                value = radio[i].value;
+                if (radio[i].checked == true) {
+                    document.getElementById(value).style.display = "";
+                    saveData_set("page_select", value);
+                    if (value == "page_select_image") {
+                        canvas_inti();
+                    }
+
+                }
+                else {
+                    document.getElementById(value).style.display = "none";
+                }
+            }
+        }
+        function page_select_load(page_select_value) {
+            var radio = document.getElementsByName("page_select");
+            for (var i = 0; i < radio.length; i++) {
+                if (radio[i].value == page_select_value)
+                    radio[i].checked = true;
+            }
+        }
+
+    </script>
+    <script>//other
+
+        // console.log(EPD);
+
+        function update_set(tag) {
+            var data = loadData_set(tag);
+            var newItem = document.getElementById(new String(tag));  //被修改的数据
+            // console.log(data);
+            // console.log(newItem);
+            data = newItem.value;
+            saveData_set(tag, data);
+        }
+        function saveData_set(tag, data) {
+            // if (tag == "epd_model_info") {
+            data = JSON.stringify(data);
+            // }
+            // console.log(JsonStr);
+            localStorage.setItem(tag, data);
+            // console.log("sava",JSON.parse(localStorage.getItem("todoList")));
+        }
+        //读取数据
+        function loadData_set(tag, defalut_value = "") {
+            var data = localStorage.getItem(tag);
+            var emptyString = "";
+            if (data == null || data == "") {
+                // if (tag == "epd_model_info")
+                //     // return epd_EPD154C1;
+                //     return epd_EPD420Z96;
+                // else if (tag == "city")
+                //     return "深圳";
+                // // if (tag == "rotate_id")
+                // //     return "3";
+                // else
+                return defalut_value;
+            } else {
+                // if (tag == "epd_model_info") {
+                data = JSON.parse(data)
+                return data;
+                // }
+                // else {
+                //     return data;
+                // }
+            }
+        }
+
+        function epd_str2model(str) {
+            if (str == 'epd_EPD154C1') {
+                model = epd_EPD154C1;
+            }
+            else if (str == 'epd_EPD420Z96') {
+                model = epd_EPD420Z96;
+            }
+            epd = structuredClone(model);
+            console.log(epd);
+
+        }
+
+
+        function epd_select(display_falg = true) {
+            str = document.getElementById("epd_model").value;
+            // model = document.getElementsByClassName(str);
+            epd_str2model(str);
+            if (display_falg) {
+                document.getElementById("rotate_id").value = epd.rotationSet;
+                canvas_inti();
+                update_image();
+                saveData_set("epd_model_info", epd);
+            }
+
+        }
+
+        function rotate_select() {
+            rotate_value = document.getElementById("rotate_id").value;
+            // console.log(typeof (rotate_value));
+            // console.log(rotate_value);
+            epd_select(false);
+            // console.log((epd.rotation + parseInt(rotate_value)));
+            epd.rotationSet = (parseInt(rotate_value)) & 3;
+            if (parseInt(rotate_value) & 1 == 1) {
+                let temp = epd.width;
+                epd.width = epd.height;
+                epd.height = temp;
+                console.log(epd);
+            }
+            canvas_inti();
+            update_image();
+            saveData_set("epd_model_info", epd);
+        }
+
+        function canvas_inti() {
+            document.getElementById("canvas").style.width = epd.width + "px";
+            document.getElementById("canvas").style.height = epd.height + "px";
+            document.getElementById("canvas").setAttribute('width', epd.width);
+            document.getElementById("canvas").setAttribute('height', epd.height);
+            parentOffset = getElementOffset(document.getElementById("canvas"));
+            document.getElementById("canvas_temp").style.width = epd.width + "px";
+            document.getElementById("canvas_temp").style.height = epd.height + "px";
+            document.getElementById("canvas_temp").setAttribute('width', epd.width);
+            document.getElementById("canvas_temp").setAttribute('height', epd.height);
+            document.getElementById("canvas_temp").style.left = parentOffset.left + "px";
+            document.getElementById("canvas_temp").style.top = (parentOffset.top) + "px";
+            // console.log(parentOffset);
+        }
+
+    </script>
+
+
+    <script>//calendar
+        /*
+        CryptoJS v3.1.2
+        code.google.com/p/crypto-js
+        (c) 2009-2013 by Jeff Mott. All rights reserved.
+        code.google.com/p/crypto-js/wiki/License
+        */
+        var CryptoJS = CryptoJS || function (g, l) {
+            var e = {}, d = e.lib = {}, m = function () { }, k = d.Base = { extend: function (a) { m.prototype = this; var c = new m; a && c.mixIn(a); c.hasOwnProperty("init") || (c.init = function () { c.$super.init.apply(this, arguments) }); c.init.prototype = c; c.$super = this; return c }, create: function () { var a = this.extend(); a.init.apply(a, arguments); return a }, init: function () { }, mixIn: function (a) { for (var c in a) a.hasOwnProperty(c) && (this[c] = a[c]); a.hasOwnProperty("toString") && (this.toString = a.toString) }, clone: function () { return this.init.prototype.extend(this) } },
+                p = d.WordArray = k.extend({
+                    init: function (a, c) { a = this.words = a || []; this.sigBytes = c != l ? c : 4 * a.length }, toString: function (a) { return (a || n).stringify(this) }, concat: function (a) { var c = this.words, q = a.words, f = this.sigBytes; a = a.sigBytes; this.clamp(); if (f % 4) for (var b = 0; b < a; b++)c[f + b >>> 2] |= (q[b >>> 2] >>> 24 - 8 * (b % 4) & 255) << 24 - 8 * ((f + b) % 4); else if (65535 < q.length) for (b = 0; b < a; b += 4)c[f + b >>> 2] = q[b >>> 2]; else c.push.apply(c, q); this.sigBytes += a; return this }, clamp: function () {
+                        var a = this.words, c = this.sigBytes; a[c >>> 2] &= 4294967295 <<
+                            32 - 8 * (c % 4); a.length = g.ceil(c / 4)
+                    }, clone: function () { var a = k.clone.call(this); a.words = this.words.slice(0); return a }, random: function (a) { for (var c = [], b = 0; b < a; b += 4)c.push(4294967296 * g.random() | 0); return new p.init(c, a) }
+                }), b = e.enc = {}, n = b.Hex = {
+                    stringify: function (a) { var c = a.words; a = a.sigBytes; for (var b = [], f = 0; f < a; f++) { var d = c[f >>> 2] >>> 24 - 8 * (f % 4) & 255; b.push((d >>> 4).toString(16)); b.push((d & 15).toString(16)) } return b.join("") }, parse: function (a) {
+                        for (var c = a.length, b = [], f = 0; f < c; f += 2)b[f >>> 3] |= parseInt(a.substr(f,
+                            2), 16) << 24 - 4 * (f % 8); return new p.init(b, c / 2)
+                    }
+                }, j = b.Latin1 = { stringify: function (a) { var c = a.words; a = a.sigBytes; for (var b = [], f = 0; f < a; f++)b.push(String.fromCharCode(c[f >>> 2] >>> 24 - 8 * (f % 4) & 255)); return b.join("") }, parse: function (a) { for (var c = a.length, b = [], f = 0; f < c; f++)b[f >>> 2] |= (a.charCodeAt(f) & 255) << 24 - 8 * (f % 4); return new p.init(b, c) } }, h = b.Utf8 = { stringify: function (a) { try { return decodeURIComponent(escape(j.stringify(a))) } catch (c) { throw Error("Malformed UTF-8 data"); } }, parse: function (a) { return j.parse(unescape(encodeURIComponent(a))) } },
+                r = d.BufferedBlockAlgorithm = k.extend({
+                    reset: function () { this._data = new p.init; this._nDataBytes = 0 }, _append: function (a) { "string" == typeof a && (a = h.parse(a)); this._data.concat(a); this._nDataBytes += a.sigBytes }, _process: function (a) { var c = this._data, b = c.words, f = c.sigBytes, d = this.blockSize, e = f / (4 * d), e = a ? g.ceil(e) : g.max((e | 0) - this._minBufferSize, 0); a = e * d; f = g.min(4 * a, f); if (a) { for (var k = 0; k < a; k += d)this._doProcessBlock(b, k); k = b.splice(0, a); c.sigBytes -= f } return new p.init(k, f) }, clone: function () {
+                        var a = k.clone.call(this);
+                        a._data = this._data.clone(); return a
+                    }, _minBufferSize: 0
+                }); d.Hasher = r.extend({
+                    cfg: k.extend(), init: function (a) { this.cfg = this.cfg.extend(a); this.reset() }, reset: function () { r.reset.call(this); this._doReset() }, update: function (a) { this._append(a); this._process(); return this }, finalize: function (a) { a && this._append(a); return this._doFinalize() }, blockSize: 16, _createHelper: function (a) { return function (b, d) { return (new a.init(d)).finalize(b) } }, _createHmacHelper: function (a) {
+                        return function (b, d) {
+                            return (new s.HMAC.init(a,
+                                d)).finalize(b)
+                        }
+                    }
+                }); var s = e.algo = {}; return e
+        }(Math);
+        (function () {
+            var g = CryptoJS, l = g.lib, e = l.WordArray, d = l.Hasher, m = [], l = g.algo.SHA1 = d.extend({
+                _doReset: function () { this._hash = new e.init([1732584193, 4023233417, 2562383102, 271733878, 3285377520]) }, _doProcessBlock: function (d, e) {
+                    for (var b = this._hash.words, n = b[0], j = b[1], h = b[2], g = b[3], l = b[4], a = 0; 80 > a; a++) {
+                        if (16 > a) m[a] = d[e + a] | 0; else { var c = m[a - 3] ^ m[a - 8] ^ m[a - 14] ^ m[a - 16]; m[a] = c << 1 | c >>> 31 } c = (n << 5 | n >>> 27) + l + m[a]; c = 20 > a ? c + ((j & h | ~j & g) + 1518500249) : 40 > a ? c + ((j ^ h ^ g) + 1859775393) : 60 > a ? c + ((j & h | j & g | h & g) - 1894007588) : c + ((j ^ h ^
+                            g) - 899497514); l = g; g = h; h = j << 30 | j >>> 2; j = n; n = c
+                    } b[0] = b[0] + n | 0; b[1] = b[1] + j | 0; b[2] = b[2] + h | 0; b[3] = b[3] + g | 0; b[4] = b[4] + l | 0
+                }, _doFinalize: function () { var d = this._data, e = d.words, b = 8 * this._nDataBytes, g = 8 * d.sigBytes; e[g >>> 5] |= 128 << 24 - g % 32; e[(g + 64 >>> 9 << 4) + 14] = Math.floor(b / 4294967296); e[(g + 64 >>> 9 << 4) + 15] = b; d.sigBytes = 4 * e.length; this._process(); return this._hash }, clone: function () { var e = d.clone.call(this); e._hash = this._hash.clone(); return e }
+            }); g.SHA1 = d._createHelper(l); g.HmacSHA1 = d._createHmacHelper(l)
+        })();
+        (function () {
+            var g = CryptoJS, l = g.enc.Utf8; g.algo.HMAC = g.lib.Base.extend({
+                init: function (e, d) { e = this._hasher = new e.init; "string" == typeof d && (d = l.parse(d)); var g = e.blockSize, k = 4 * g; d.sigBytes > k && (d = e.finalize(d)); d.clamp(); for (var p = this._oKey = d.clone(), b = this._iKey = d.clone(), n = p.words, j = b.words, h = 0; h < g; h++)n[h] ^= 1549556828, j[h] ^= 909522486; p.sigBytes = b.sigBytes = k; this.reset() }, reset: function () { var e = this._hasher; e.reset(); e.update(this._iKey) }, update: function (e) { this._hasher.update(e); return this }, finalize: function (e) {
+                    var d =
+                        this._hasher; e = d.finalize(e); d.reset(); return d.finalize(this._oKey.clone().concat(e))
+                }
+            })
+        })();
+
+        /*
+        CryptoJS v3.1.2
+        code.google.com/p/crypto-js
+        (c) 2009-2013 by Jeff Mott. All rights reserved.
+        code.google.com/p/crypto-js/wiki/License
+        */
+        (function () {
+            var h = CryptoJS, j = h.lib.WordArray; h.enc.Base64 = {
+                stringify: function (b) { var e = b.words, f = b.sigBytes, c = this._map; b.clamp(); b = []; for (var a = 0; a < f; a += 3)for (var d = (e[a >>> 2] >>> 24 - 8 * (a % 4) & 255) << 16 | (e[a + 1 >>> 2] >>> 24 - 8 * ((a + 1) % 4) & 255) << 8 | e[a + 2 >>> 2] >>> 24 - 8 * ((a + 2) % 4) & 255, g = 0; 4 > g && a + 0.75 * g < f; g++)b.push(c.charAt(d >>> 6 * (3 - g) & 63)); if (e = c.charAt(64)) for (; b.length % 4;)b.push(e); return b.join("") }, parse: function (b) {
+                    var e = b.length, f = this._map, c = f.charAt(64); c && (c = b.indexOf(c), -1 != c && (e = c)); for (var c = [], a = 0, d = 0; d <
+                        e; d++)if (d % 4) { var g = f.indexOf(b.charAt(d - 1)) << 2 * (d % 4), h = f.indexOf(b.charAt(d)) >>> 6 - 2 * (d % 4); c[a >>> 2] |= (g | h) << 24 - 8 * (a % 4); a++ } return j.create(c, a)
+                }, _map: "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/="
+            }
+        })();
+        /**
+        * @1900-2100区间内的公历、农历互转
+        * @charset UTF-8
+        * @Author  Jea杨(JJonline@JJonline.Cn)
+        * @Time    2014-7-21
+        * @Time    2016-8-13 Fixed 2033hex、Attribution Annals
+        * @Time    2016-9-25 Fixed lunar LeapMonth Param Bug
+        * @Time    2017-7-24 Fixed use getTerm Func Param Error.use solar year,NOT lunar year
+        * @Version 1.0.3
+        * @公历转农历：calendar.solar2lunar(1987,11,01); //[you can ignore params of prefix 0]
+        * @农历转公历：calendar.lunar2solar(1987,09,10); //[you can ignore params of prefix 0]
+        */
+        var calendar = {
+
+            /**
+              * 农历1900-2100的润大小信息表
+              * @Array Of Property
+              * @return Hex
+              */
+            lunarInfo: [0x04bd8, 0x04ae0, 0x0a570, 0x054d5, 0x0d260, 0x0d950, 0x16554, 0x056a0, 0x09ad0, 0x055d2,//1900-1909
+                0x04ae0, 0x0a5b6, 0x0a4d0, 0x0d250, 0x1d255, 0x0b540, 0x0d6a0, 0x0ada2, 0x095b0, 0x14977,//1910-1919
+                0x04970, 0x0a4b0, 0x0b4b5, 0x06a50, 0x06d40, 0x1ab54, 0x02b60, 0x09570, 0x052f2, 0x04970,//1920-1929
+                0x06566, 0x0d4a0, 0x0ea50, 0x16a95, 0x05ad0, 0x02b60, 0x186e3, 0x092e0, 0x1c8d7, 0x0c950,//1930-1939
+                0x0d4a0, 0x1d8a6, 0x0b550, 0x056a0, 0x1a5b4, 0x025d0, 0x092d0, 0x0d2b2, 0x0a950, 0x0b557,//1940-1949
+                0x06ca0, 0x0b550, 0x15355, 0x04da0, 0x0a5b0, 0x14573, 0x052b0, 0x0a9a8, 0x0e950, 0x06aa0,//1950-1959
+                0x0aea6, 0x0ab50, 0x04b60, 0x0aae4, 0x0a570, 0x05260, 0x0f263, 0x0d950, 0x05b57, 0x056a0,//1960-1969
+                0x096d0, 0x04dd5, 0x04ad0, 0x0a4d0, 0x0d4d4, 0x0d250, 0x0d558, 0x0b540, 0x0b6a0, 0x195a6,//1970-1979
+                0x095b0, 0x049b0, 0x0a974, 0x0a4b0, 0x0b27a, 0x06a50, 0x06d40, 0x0af46, 0x0ab60, 0x09570,//1980-1989
+                0x04af5, 0x04970, 0x064b0, 0x074a3, 0x0ea50, 0x06b58, 0x05ac0, 0x0ab60, 0x096d5, 0x092e0,//1990-1999
+                0x0c960, 0x0d954, 0x0d4a0, 0x0da50, 0x07552, 0x056a0, 0x0abb7, 0x025d0, 0x092d0, 0x0cab5,//2000-2009
+                0x0a950, 0x0b4a0, 0x0baa4, 0x0ad50, 0x055d9, 0x04ba0, 0x0a5b0, 0x15176, 0x052b0, 0x0a930,//2010-2019
+                0x07954, 0x06aa0, 0x0ad50, 0x05b52, 0x04b60, 0x0a6e6, 0x0a4e0, 0x0d260, 0x0ea65, 0x0d530,//2020-2029
+                0x05aa0, 0x076a3, 0x096d0, 0x04afb, 0x04ad0, 0x0a4d0, 0x1d0b6, 0x0d250, 0x0d520, 0x0dd45,//2030-2039
+                0x0b5a0, 0x056d0, 0x055b2, 0x049b0, 0x0a577, 0x0a4b0, 0x0aa50, 0x1b255, 0x06d20, 0x0ada0,//2040-2049
+                /**Add By JJonline@JJonline.Cn**/
+                0x14b63, 0x09370, 0x049f8, 0x04970, 0x064b0, 0x168a6, 0x0ea50, 0x06b20, 0x1a6c4, 0x0aae0,//2050-2059
+                0x092e0, 0x0d2e3, 0x0c960, 0x0d557, 0x0d4a0, 0x0da50, 0x05d55, 0x056a0, 0x0a6d0, 0x055d4,//2060-2069
+                0x052d0, 0x0a9b8, 0x0a950, 0x0b4a0, 0x0b6a6, 0x0ad50, 0x055a0, 0x0aba4, 0x0a5b0, 0x052b0,//2070-2079
+                0x0b273, 0x06930, 0x07337, 0x06aa0, 0x0ad50, 0x14b55, 0x04b60, 0x0a570, 0x054e4, 0x0d160,//2080-2089
+                0x0e968, 0x0d520, 0x0daa0, 0x16aa6, 0x056d0, 0x04ae0, 0x0a9d4, 0x0a2d0, 0x0d150, 0x0f252,//2090-2099
+                0x0d520],//2100
+
+            /**
+              * 公历每个月份的天数普通表
+              * @Array Of Property
+              * @return Number
+              */
+            solarMonth: [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31],
+
+            /**
+              * 天干地支之天干速查表
+              * @Array Of Property trans["甲","乙","丙","丁","戊","己","庚","辛","壬","癸"]
+              * @return Cn string
+              */
+            Gan: ["\u7532", "\u4e59", "\u4e19", "\u4e01", "\u620a", "\u5df1", "\u5e9a", "\u8f9b", "\u58ec", "\u7678"],
+
+            /**
+              * 天干地支之地支速查表
+              * @Array Of Property
+              * @trans["子","丑","寅","卯","辰","巳","午","未","申","酉","戌","亥"]
+              * @return Cn string
+              */
+            Zhi: ["\u5b50", "\u4e11", "\u5bc5", "\u536f", "\u8fb0", "\u5df3", "\u5348", "\u672a", "\u7533", "\u9149", "\u620c", "\u4ea5"],
+
+            /**
+              * 天干地支之地支速查表<=>生肖
+              * @Array Of Property
+              * @trans["鼠","牛","虎","兔","龙","蛇","马","羊","猴","鸡","狗","猪"]
+              * @return Cn string
+              */
+            Animals: ["\u9f20", "\u725b", "\u864e", "\u5154", "\u9f99", "\u86c7", "\u9a6c", "\u7f8a", "\u7334", "\u9e21", "\u72d7", "\u732a"],
+
+            /**
+             * 阳历节日
+             */
+            festival: {
+                '1-1': { title: '元旦节' },
+                '2-14': { title: '情人节' },
+                '5-1': { title: '劳动节' },
+                '5-4': { title: '青年节' },
+                '6-1': { title: '儿童节' },
+                '9-10': { title: '教师节' },
+                '10-1': { title: '国庆节' },
+                '12-25': { title: '圣诞节' },
+
+                '3-8': { title: '妇女节' },
+                '3-12': { title: '植树节' },
+                '4-1': { title: '愚人节' },
+                '5-12': { title: '护士节' },
+                '7-1': { title: '建党节' },
+                '8-1': { title: '建军节' },
+                '12-24': { title: '平安夜' },
+            },
+
+            /**
+             * 农历节日
+             */
+            lfestival: {
+                '12-30': { title: '除夕' },
+                '1-1': { title: '春节' },
+                '1-15': { title: '元宵节' },
+                '2-2': { title: '龙抬头' },
+                '5-5': { title: '端午节' },
+                '7-7': { title: '七夕节' },
+                '7-15': { title: '中元节' },
+                '8-15': { title: '中秋节' },
+                '9-9': { title: '重阳节' },
+                '10-1': { title: '寒衣节' },
+                '10-15': { title: '下元节' },
+                '12-8': { title: '腊八节' },
+                '12-23': { title: '北方小年' },
+                '12-24': { title: '南方小年' },
+            },
+
+            /**
+             * 返回默认定义的阳历节日
+             */
+            getFestival() {
+                return this.festival
+            },
+
+            /**
+             * 返回默认定义的内容里节日
+             */
+            getLunarFestival() {
+                return this.lfestival
+            },
+
+            /**
+             * 
+             * @param {Object} 按照festival的格式输入数据，设置阳历节日
+             */
+            setFestival(param = {}) {
+                this.festival = param
+            },
+
+            /**
+             * 
+             * @param {Object} 按照lfestival的格式输入数据，设置农历节日
+             */
+            setLunarFestival(param = {}) {
+                this.lfestival = param
+            },
+
+            /**
+              * 24节气速查表
+              * @Array Of Property
+              * @trans["小寒","大寒","立春","雨水","惊蛰","春分","清明","谷雨","立夏","小满","芒种","夏至","小暑","大暑","立秋","处暑","白露","秋分","寒露","霜降","立冬","小雪","大雪","冬至"]
+              * @return Cn string
+              */
+            solarTerm: ["\u5c0f\u5bd2", "\u5927\u5bd2", "\u7acb\u6625", "\u96e8\u6c34", "\u60ca\u86f0", "\u6625\u5206", "\u6e05\u660e", "\u8c37\u96e8", "\u7acb\u590f", "\u5c0f\u6ee1", "\u8292\u79cd", "\u590f\u81f3", "\u5c0f\u6691", "\u5927\u6691", "\u7acb\u79cb", "\u5904\u6691", "\u767d\u9732", "\u79cb\u5206", "\u5bd2\u9732", "\u971c\u964d", "\u7acb\u51ac", "\u5c0f\u96ea", "\u5927\u96ea", "\u51ac\u81f3"],
+
+            /**
+              * 1900-2100各年的24节气日期速查表
+              * @Array Of Property
+              * @return 0x string For splice
+              */
+            sTermInfo: ['9778397bd097c36b0b6fc9274c91aa', '97b6b97bd19801ec9210c965cc920e', '97bcf97c3598082c95f8c965cc920f',
+                '97bd0b06bdb0722c965ce1cfcc920f', 'b027097bd097c36b0b6fc9274c91aa', '97b6b97bd19801ec9210c965cc920e',
+                '97bcf97c359801ec95f8c965cc920f', '97bd0b06bdb0722c965ce1cfcc920f', 'b027097bd097c36b0b6fc9274c91aa',
+                '97b6b97bd19801ec9210c965cc920e', '97bcf97c359801ec95f8c965cc920f', '97bd0b06bdb0722c965ce1cfcc920f',
+                'b027097bd097c36b0b6fc9274c91aa', '9778397bd19801ec9210c965cc920e', '97b6b97bd19801ec95f8c965cc920f',
+                '97bd09801d98082c95f8e1cfcc920f', '97bd097bd097c36b0b6fc9210c8dc2', '9778397bd197c36c9210c9274c91aa',
+                '97b6b97bd19801ec95f8c965cc920e', '97bd09801d98082c95f8e1cfcc920f', '97bd097bd097c36b0b6fc9210c8dc2',
+                '9778397bd097c36c9210c9274c91aa', '97b6b97bd19801ec95f8c965cc920e', '97bcf97c3598082c95f8e1cfcc920f',
+                '97bd097bd097c36b0b6fc9210c8dc2', '9778397bd097c36c9210c9274c91aa', '97b6b97bd19801ec9210c965cc920e',
+                '97bcf97c3598082c95f8c965cc920f', '97bd097bd097c35b0b6fc920fb0722', '9778397bd097c36b0b6fc9274c91aa',
+                '97b6b97bd19801ec9210c965cc920e', '97bcf97c3598082c95f8c965cc920f', '97bd097bd097c35b0b6fc920fb0722',
+                '9778397bd097c36b0b6fc9274c91aa', '97b6b97bd19801ec9210c965cc920e', '97bcf97c359801ec95f8c965cc920f',
+                '97bd097bd097c35b0b6fc920fb0722', '9778397bd097c36b0b6fc9274c91aa', '97b6b97bd19801ec9210c965cc920e',
+                '97bcf97c359801ec95f8c965cc920f', '97bd097bd097c35b0b6fc920fb0722', '9778397bd097c36b0b6fc9274c91aa',
+                '97b6b97bd19801ec9210c965cc920e', '97bcf97c359801ec95f8c965cc920f', '97bd097bd07f595b0b6fc920fb0722',
+                '9778397bd097c36b0b6fc9210c8dc2', '9778397bd19801ec9210c9274c920e', '97b6b97bd19801ec95f8c965cc920f',
+                '97bd07f5307f595b0b0bc920fb0722', '7f0e397bd097c36b0b6fc9210c8dc2', '9778397bd097c36c9210c9274c920e',
+                '97b6b97bd19801ec95f8c965cc920f', '97bd07f5307f595b0b0bc920fb0722', '7f0e397bd097c36b0b6fc9210c8dc2',
+                '9778397bd097c36c9210c9274c91aa', '97b6b97bd19801ec9210c965cc920e', '97bd07f1487f595b0b0bc920fb0722',
+                '7f0e397bd097c36b0b6fc9210c8dc2', '9778397bd097c36b0b6fc9274c91aa', '97b6b97bd19801ec9210c965cc920e',
+                '97bcf7f1487f595b0b0bb0b6fb0722', '7f0e397bd097c35b0b6fc920fb0722', '9778397bd097c36b0b6fc9274c91aa',
+                '97b6b97bd19801ec9210c965cc920e', '97bcf7f1487f595b0b0bb0b6fb0722', '7f0e397bd097c35b0b6fc920fb0722',
+                '9778397bd097c36b0b6fc9274c91aa', '97b6b97bd19801ec9210c965cc920e', '97bcf7f1487f531b0b0bb0b6fb0722',
+                '7f0e397bd097c35b0b6fc920fb0722', '9778397bd097c36b0b6fc9274c91aa', '97b6b97bd19801ec9210c965cc920e',
+                '97bcf7f1487f531b0b0bb0b6fb0722', '7f0e397bd07f595b0b6fc920fb0722', '9778397bd097c36b0b6fc9274c91aa',
+                '97b6b97bd19801ec9210c9274c920e', '97bcf7f0e47f531b0b0bb0b6fb0722', '7f0e397bd07f595b0b0bc920fb0722',
+                '9778397bd097c36b0b6fc9210c91aa', '97b6b97bd197c36c9210c9274c920e', '97bcf7f0e47f531b0b0bb0b6fb0722',
+                '7f0e397bd07f595b0b0bc920fb0722', '9778397bd097c36b0b6fc9210c8dc2', '9778397bd097c36c9210c9274c920e',
+                '97b6b7f0e47f531b0723b0b6fb0722', '7f0e37f5307f595b0b0bc920fb0722', '7f0e397bd097c36b0b6fc9210c8dc2',
+                '9778397bd097c36b0b70c9274c91aa', '97b6b7f0e47f531b0723b0b6fb0721', '7f0e37f1487f595b0b0bb0b6fb0722',
+                '7f0e397bd097c35b0b6fc9210c8dc2', '9778397bd097c36b0b6fc9274c91aa', '97b6b7f0e47f531b0723b0b6fb0721',
+                '7f0e27f1487f595b0b0bb0b6fb0722', '7f0e397bd097c35b0b6fc920fb0722', '9778397bd097c36b0b6fc9274c91aa',
+                '97b6b7f0e47f531b0723b0b6fb0721', '7f0e27f1487f531b0b0bb0b6fb0722', '7f0e397bd097c35b0b6fc920fb0722',
+                '9778397bd097c36b0b6fc9274c91aa', '97b6b7f0e47f531b0723b0b6fb0721', '7f0e27f1487f531b0b0bb0b6fb0722',
+                '7f0e397bd097c35b0b6fc920fb0722', '9778397bd097c36b0b6fc9274c91aa', '97b6b7f0e47f531b0723b0b6fb0721',
+                '7f0e27f1487f531b0b0bb0b6fb0722', '7f0e397bd07f595b0b0bc920fb0722', '9778397bd097c36b0b6fc9274c91aa',
+                '97b6b7f0e47f531b0723b0787b0721', '7f0e27f0e47f531b0b0bb0b6fb0722', '7f0e397bd07f595b0b0bc920fb0722',
+                '9778397bd097c36b0b6fc9210c91aa', '97b6b7f0e47f149b0723b0787b0721', '7f0e27f0e47f531b0723b0b6fb0722',
+                '7f0e397bd07f595b0b0bc920fb0722', '9778397bd097c36b0b6fc9210c8dc2', '977837f0e37f149b0723b0787b0721',
+                '7f07e7f0e47f531b0723b0b6fb0722', '7f0e37f5307f595b0b0bc920fb0722', '7f0e397bd097c35b0b6fc9210c8dc2',
+                '977837f0e37f14998082b0787b0721', '7f07e7f0e47f531b0723b0b6fb0721', '7f0e37f1487f595b0b0bb0b6fb0722',
+                '7f0e397bd097c35b0b6fc9210c8dc2', '977837f0e37f14998082b0787b06bd', '7f07e7f0e47f531b0723b0b6fb0721',
+                '7f0e27f1487f531b0b0bb0b6fb0722', '7f0e397bd097c35b0b6fc920fb0722', '977837f0e37f14998082b0787b06bd',
+                '7f07e7f0e47f531b0723b0b6fb0721', '7f0e27f1487f531b0b0bb0b6fb0722', '7f0e397bd097c35b0b6fc920fb0722',
+                '977837f0e37f14998082b0787b06bd', '7f07e7f0e47f531b0723b0b6fb0721', '7f0e27f1487f531b0b0bb0b6fb0722',
+                '7f0e397bd07f595b0b0bc920fb0722', '977837f0e37f14998082b0787b06bd', '7f07e7f0e47f531b0723b0b6fb0721',
+                '7f0e27f1487f531b0b0bb0b6fb0722', '7f0e397bd07f595b0b0bc920fb0722', '977837f0e37f14998082b0787b06bd',
+                '7f07e7f0e47f149b0723b0787b0721', '7f0e27f0e47f531b0b0bb0b6fb0722', '7f0e397bd07f595b0b0bc920fb0722',
+                '977837f0e37f14998082b0723b06bd', '7f07e7f0e37f149b0723b0787b0721', '7f0e27f0e47f531b0723b0b6fb0722',
+                '7f0e397bd07f595b0b0bc920fb0722', '977837f0e37f14898082b0723b02d5', '7ec967f0e37f14998082b0787b0721',
+                '7f07e7f0e47f531b0723b0b6fb0722', '7f0e37f1487f595b0b0bb0b6fb0722', '7f0e37f0e37f14898082b0723b02d5',
+                '7ec967f0e37f14998082b0787b0721', '7f07e7f0e47f531b0723b0b6fb0722', '7f0e37f1487f531b0b0bb0b6fb0722',
+                '7f0e37f0e37f14898082b0723b02d5', '7ec967f0e37f14998082b0787b06bd', '7f07e7f0e47f531b0723b0b6fb0721',
+                '7f0e37f1487f531b0b0bb0b6fb0722', '7f0e37f0e37f14898082b072297c35', '7ec967f0e37f14998082b0787b06bd',
+                '7f07e7f0e47f531b0723b0b6fb0721', '7f0e27f1487f531b0b0bb0b6fb0722', '7f0e37f0e37f14898082b072297c35',
+                '7ec967f0e37f14998082b0787b06bd', '7f07e7f0e47f531b0723b0b6fb0721', '7f0e27f1487f531b0b0bb0b6fb0722',
+                '7f0e37f0e366aa89801eb072297c35', '7ec967f0e37f14998082b0787b06bd', '7f07e7f0e47f149b0723b0787b0721',
+                '7f0e27f1487f531b0b0bb0b6fb0722', '7f0e37f0e366aa89801eb072297c35', '7ec967f0e37f14998082b0723b06bd',
+                '7f07e7f0e47f149b0723b0787b0721', '7f0e27f0e47f531b0723b0b6fb0722', '7f0e37f0e366aa89801eb072297c35',
+                '7ec967f0e37f14998082b0723b06bd', '7f07e7f0e37f14998083b0787b0721', '7f0e27f0e47f531b0723b0b6fb0722',
+                '7f0e37f0e366aa89801eb072297c35', '7ec967f0e37f14898082b0723b02d5', '7f07e7f0e37f14998082b0787b0721',
+                '7f07e7f0e47f531b0723b0b6fb0722', '7f0e36665b66aa89801e9808297c35', '665f67f0e37f14898082b0723b02d5',
+                '7ec967f0e37f14998082b0787b0721', '7f07e7f0e47f531b0723b0b6fb0722', '7f0e36665b66a449801e9808297c35',
+                '665f67f0e37f14898082b0723b02d5', '7ec967f0e37f14998082b0787b06bd', '7f07e7f0e47f531b0723b0b6fb0721',
+                '7f0e36665b66a449801e9808297c35', '665f67f0e37f14898082b072297c35', '7ec967f0e37f14998082b0787b06bd',
+                '7f07e7f0e47f531b0723b0b6fb0721', '7f0e26665b66a449801e9808297c35', '665f67f0e37f1489801eb072297c35',
+                '7ec967f0e37f14998082b0787b06bd', '7f07e7f0e47f531b0723b0b6fb0721', '7f0e27f1487f531b0b0bb0b6fb0722'],
+
+            /**
+              * 数字转中文速查表
+              * @Array Of Property
+              * @trans ['日','一','二','三','四','五','六','七','八','九','十']
+              * @return Cn string
+              */
+            nStr1: ["\u65e5", "\u4e00", "\u4e8c", "\u4e09", "\u56db", "\u4e94", "\u516d", "\u4e03", "\u516b", "\u4e5d", "\u5341"],
+
+            /**
+              * 日期转农历称呼速查表
+              * @Array Of Property
+              * @trans ['初','十','廿','卅']
+              * @return Cn string
+              */
+            nStr2: ["\u521d", "\u5341", "\u5eff", "\u5345"],
+
+            /**
+              * 月份转农历称呼速查表
+              * @Array Of Property
+              * @trans ['正','一','二','三','四','五','六','七','八','九','十','冬','腊']
+              * @return Cn string
+              */
+            nStr3: ["\u6b63", "\u4e8c", "\u4e09", "\u56db", "\u4e94", "\u516d", "\u4e03", "\u516b", "\u4e5d", "\u5341", "\u51ac", "\u814a"],
+
+            /**
+              * 返回农历y年一整年的总天数
+              * @param lunar Year
+              * @return Number
+              * @eg:var count = calendar.lYearDays(1987) ;//count=387
+              */
+            lYearDays: function (y) {
+                var i, sum = 348;
+                for (i = 0x8000; i > 0x8; i >>= 1) { sum += (this.lunarInfo[y - 1900] & i) ? 1 : 0; }
+                return (sum + this.leapDays(y));
+            },
+
+            /**
+              * 返回农历y年闰月是哪个月；若y年没有闰月 则返回0
+              * @param lunar Year
+              * @return Number (0-12)
+              * @eg:var leapMonth = calendar.leapMonth(1987) ;//leapMonth=6
+              */
+            leapMonth: function (y) { //闰字编码 \u95f0
+                return (this.lunarInfo[y - 1900] & 0xf);
+            },
+
+            /**
+              * 返回农历y年闰月的天数 若该年没有闰月则返回0
+              * @param lunar Year
+              * @return Number (0、29、30)
+              * @eg:var leapMonthDay = calendar.leapDays(1987) ;//leapMonthDay=29
+              */
+            leapDays: function (y) {
+                if (this.leapMonth(y)) {
+                    return ((this.lunarInfo[y - 1900] & 0x10000) ? 30 : 29);
+                }
+                return (0);
+            },
+
+            /**
+              * 返回农历y年m月（非闰月）的总天数，计算m为闰月时的天数请使用leapDays方法
+              * @param lunar Year
+              * @return Number (-1、29、30)
+              * @eg:var MonthDay = calendar.monthDays(1987,9) ;//MonthDay=29
+              */
+            monthDays: function (y, m) {
+                if (m > 12 || m < 1) { return -1 }//月份参数从1至12，参数错误返回-1
+                return ((this.lunarInfo[y - 1900] & (0x10000 >> m)) ? 30 : 29);
+            },
+
+            /**
+              * 返回公历(!)y年m月的天数
+              * @param solar Year
+              * @return Number (-1、28、29、30、31)
+              * @eg:var solarMonthDay = calendar.leapDays(1987) ;//solarMonthDay=30
+              */
+            solarDays: function (y, m) {
+                if (m > 12 || m < 1) { return -1 } //若参数错误 返回-1
+                var ms = m - 1;
+                if (ms == 1) { //2月份的闰平规律测算后确认返回28或29
+                    return (((y % 4 == 0) && (y % 100 != 0) || (y % 400 == 0)) ? 29 : 28);
+                } else {
+                    return (this.solarMonth[ms]);
+                }
+            },
+
+            /**
+             * 农历年份转换为干支纪年
+             * @param  lYear 农历年的年份数
+             * @return Cn string
+             */
+            toGanZhiYear: function (lYear) {
+                var ganKey = (lYear - 3) % 10;
+                var zhiKey = (lYear - 3) % 12;
+                if (ganKey == 0) ganKey = 10;//如果余数为0则为最后一个天干
+                if (zhiKey == 0) zhiKey = 12;//如果余数为0则为最后一个地支
+                return this.Gan[ganKey - 1] + this.Zhi[zhiKey - 1];
+
+            },
+
+            /**
+             * 公历月、日判断所属星座
+             * @param  cMonth [description]
+             * @param  cDay [description]
+             * @return Cn string
+             */
+            toAstro: function (cMonth, cDay) {
+                var s = "\u9b54\u7faf\u6c34\u74f6\u53cc\u9c7c\u767d\u7f8a\u91d1\u725b\u53cc\u5b50\u5de8\u87f9\u72ee\u5b50\u5904\u5973\u5929\u79e4\u5929\u874e\u5c04\u624b\u9b54\u7faf";
+                var arr = [20, 19, 21, 21, 21, 22, 23, 23, 23, 23, 22, 22];
+                return s.substr(cMonth * 2 - (cDay < arr[cMonth - 1] ? 2 : 0), 2) + "\u5ea7";//座
+            },
+
+            /**
+              * 传入offset偏移量返回干支
+              * @param offset 相对甲子的偏移量
+              * @return Cn string
+              */
+            toGanZhi: function (offset) {
+                return this.Gan[offset % 10] + this.Zhi[offset % 12];
+            },
+
+            /**
+              * 传入公历(!)y年获得该年第n个节气的公历日期
+              * @param y公历年(1900-2100)；n二十四节气中的第几个节气(1~24)；从n=1(小寒)算起
+              * @return day Number
+              * @eg:var _24 = calendar.getTerm(1987,3) ;//_24=4;意即1987年2月4日立春
+              */
+            getTerm: function (y, n) {
+                if (y < 1900 || y > 2100) { return -1; }
+                if (n < 1 || n > 24) { return -1; }
+                var _table = this.sTermInfo[y - 1900];
+                var _info = [
+                    parseInt('0x' + _table.substr(0, 5)).toString(),
+                    parseInt('0x' + _table.substr(5, 5)).toString(),
+                    parseInt('0x' + _table.substr(10, 5)).toString(),
+                    parseInt('0x' + _table.substr(15, 5)).toString(),
+                    parseInt('0x' + _table.substr(20, 5)).toString(),
+                    parseInt('0x' + _table.substr(25, 5)).toString()
+                ];
+                var _calday = [
+                    _info[0].substr(0, 1),
+                    _info[0].substr(1, 2),
+                    _info[0].substr(3, 1),
+                    _info[0].substr(4, 2),
+
+                    _info[1].substr(0, 1),
+                    _info[1].substr(1, 2),
+                    _info[1].substr(3, 1),
+                    _info[1].substr(4, 2),
+
+                    _info[2].substr(0, 1),
+                    _info[2].substr(1, 2),
+                    _info[2].substr(3, 1),
+                    _info[2].substr(4, 2),
+
+                    _info[3].substr(0, 1),
+                    _info[3].substr(1, 2),
+                    _info[3].substr(3, 1),
+                    _info[3].substr(4, 2),
+
+                    _info[4].substr(0, 1),
+                    _info[4].substr(1, 2),
+                    _info[4].substr(3, 1),
+                    _info[4].substr(4, 2),
+
+                    _info[5].substr(0, 1),
+                    _info[5].substr(1, 2),
+                    _info[5].substr(3, 1),
+                    _info[5].substr(4, 2),
+                ];
+                return parseInt(_calday[n - 1]);
+            },
+
+            /**
+              * 传入农历数字月份返回汉语通俗表示法
+              * @param lunar month
+              * @return Cn string
+              * @eg:var cnMonth = calendar.toChinaMonth(12) ;//cnMonth='腊月'
+              */
+            toChinaMonth: function (m) { // 月 => \u6708
+                if (m > 12 || m < 1) { return -1 } //若参数错误 返回-1
+                var s = this.nStr3[m - 1];
+                s += "\u6708";//加上月字
+                return s;
+            },
+
+            /**
+              * 传入农历日期数字返回汉字表示法
+              * @param lunar day
+              * @return Cn string
+              * @eg:var cnDay = calendar.toChinaDay(21) ;//cnMonth='廿一'
+              */
+            toChinaDay: function (d) { //日 => \u65e5
+                var s;
+                switch (d) {
+                    case 10:
+                        s = '\u521d\u5341'; break;
+                    case 20:
+                        s = '\u4e8c\u5341'; break;
+                        break;
+                    case 30:
+                        s = '\u4e09\u5341'; break;
+                        break;
+                    default:
+                        s = this.nStr2[Math.floor(d / 10)];
+                        s += this.nStr1[d % 10];
+                }
+                return (s);
+            },
+
+            /**
+              * 年份转生肖[!仅能大致转换] => 精确划分生肖分界线是“立春”
+              * @param y year
+              * @return Cn string
+              * @eg:var animal = calendar.getAnimal(1987) ;//animal='兔'
+              */
+            getAnimal: function (y) {
+                return this.Animals[(y - 4) % 12]
+            },
+
+            /**
+              * 传入阳历年月日获得详细的公历、农历object信息 <=>JSON
+              * @param y  solar year
+              * @param m  solar month
+              * @param d  solar day
+              * @return JSON object
+              * @eg:console.log(calendar.solar2lunar(1987,11,01));
+              */
+            solar2lunar: function (y, m, d) { //参数区间1900.1.31~2100.12.31
+                y = parseInt(y)
+                m = parseInt(m)
+                d = parseInt(d)
+                //年份限定、上限
+                if (y < 1900 || y > 2100) {
+                    return -1;// undefined转换为数字变为NaN
+                }
+                //公历传参最下限
+                if (y == 1900 && m == 1 && d < 31) {
+                    return -1;
+                }
+                //未传参  获得当天
+                if (!y) {
+                    var objDate = new Date();
+                } else {
+                    var objDate = new Date(y, parseInt(m) - 1, d)
+                }
+                var i, leap = 0, temp = 0;
+                //修正ymd参数
+                var y = objDate.getFullYear(),
+                    m = objDate.getMonth() + 1,
+                    d = objDate.getDate();
+                var offset = (Date.UTC(objDate.getFullYear(), objDate.getMonth(), objDate.getDate()) - Date.UTC(1900, 0, 31)) / 86400000;
+                for (i = 1900; i < 2101 && offset > 0; i++) {
+                    temp = this.lYearDays(i);
+                    offset -= temp;
+                }
+                if (offset < 0) {
+                    offset += temp; i--;
+                }
+
+                //是否今天
+                var isTodayObj = new Date(),
+                    isToday = false;
+                if (isTodayObj.getFullYear() == y && isTodayObj.getMonth() + 1 == m && isTodayObj.getDate() == d) {
+                    isToday = true;
+                }
+                //星期几
+                var nWeek = objDate.getDay(),
+                    cWeek = this.nStr1[nWeek];
+                //数字表示周几顺应天朝周一开始的惯例
+                if (nWeek == 0) {
+                    nWeek = 7;
+                }
+                //农历年
+                var year = i;
+                var leap = this.leapMonth(i); //闰哪个月
+                var isLeap = false;
+
+                //效验闰月
+                for (i = 1; i < 13 && offset > 0; i++) {
+                    //闰月
+                    if (leap > 0 && i == (leap + 1) && isLeap == false) {
+                        --i;
+                        isLeap = true; temp = this.leapDays(year); //计算农历闰月天数
+                    }
+                    else {
+                        temp = this.monthDays(year, i);//计算农历普通月天数
+                    }
+                    //解除闰月
+                    if (isLeap == true && i == (leap + 1)) { isLeap = false; }
+                    offset -= temp;
+                }
+                // 闰月导致数组下标重叠取反
+                if (offset == 0 && leap > 0 && i == leap + 1) {
+                    if (isLeap) {
+                        isLeap = false;
+                    } else {
+                        isLeap = true; --i;
+                    }
+                }
+                if (offset < 0) {
+                    offset += temp; --i;
+                }
+                //农历月
+                var month = i;
+                //农历日
+                var day = offset + 1;
+                //天干地支处理
+                var sm = m - 1;
+                var gzY = this.toGanZhiYear(year);
+
+                // 当月的两个节气
+                // bugfix-2017-7-24 11:03:38 use lunar Year Param `y` Not `year`
+                var firstNode = this.getTerm(y, (m * 2 - 1));//返回当月「节」为几日开始
+                var secondNode = this.getTerm(y, (m * 2));//返回当月「节」为几日开始
+
+                // 依据12节气修正干支月
+                var gzM = this.toGanZhi((y - 1900) * 12 + m + 11);
+                if (d >= firstNode) {
+                    gzM = this.toGanZhi((y - 1900) * 12 + m + 12);
+                }
+
+                //传入的日期的节气与否
+                var isTerm = false;
+                var Term = null;
+                if (firstNode == d) {
+                    isTerm = true;
+                    Term = this.solarTerm[m * 2 - 2];
+                }
+                if (secondNode == d) {
+                    isTerm = true;
+                    Term = this.solarTerm[m * 2 - 1];
+                }
+                //日柱 当月一日与 1900/1/1 相差天数
+                var dayCyclical = Date.UTC(y, sm, 1, 0, 0, 0, 0) / 86400000 + 25567 + 10;
+                var gzD = this.toGanZhi(dayCyclical + d - 1);
+                //该日期所属的星座
+                var astro = this.toAstro(m, d);
+
+                var solarDate = y + '-' + m + '-' + d
+                var lunarDate = year + '-' + month + '-' + day
+
+                var festival = this.festival
+                var lfestival = this.lfestival
+
+                var festivalDate = m + '-' + d
+                var lunarFestivalDate = month + '-' + day
+
+                return {
+                    date: solarDate,
+                    lunarDate: lunarDate,
+                    festival: festival[festivalDate] ? festival[festivalDate].title : null,
+                    lunarFestival: lfestival[lunarFestivalDate] ? lfestival[lunarFestivalDate].title : null,
+                    'lYear': year,
+                    'lMonth': month,
+                    'lDay': day,
+                    'Animal': this.getAnimal(year),
+                    'IMonthCn': (isLeap ? "\u95f0" : '') + this.toChinaMonth(month),
+                    'IDayCn': this.toChinaDay(day),
+                    'cYear': y,
+                    'cMonth': m,
+                    'cDay': d,
+                    'gzYear': gzY,
+                    'gzMonth': gzM,
+                    'gzDay': gzD,
+                    'isToday': isToday,
+                    'isLeap': isLeap,
+                    'nWeek': nWeek,
+                    'ncWeek': "\u661f\u671f" + cWeek,
+                    'isTerm': isTerm,
+                    'Term': Term,
+                    'astro': astro
+                };
+            },
+
+            /**
+              * 传入农历年月日以及传入的月份是否闰月获得详细的公历、农历object信息 <=>JSON
+              * @param y  lunar year
+              * @param m  lunar month
+              * @param d  lunar day
+              * @param isLeapMonth  lunar month is leap or not.[如果是农历闰月第四个参数赋值true即可]
+              * @return JSON object
+              * @eg:console.log(calendar.lunar2solar(1987,9,10));
+              */
+            lunar2solar: function (y, m, d, isLeapMonth) {   //参数区间1900.1.31~2100.12.1
+                y = parseInt(y)
+                m = parseInt(m)
+                d = parseInt(d)
+                var isLeapMonth = !!isLeapMonth;
+                var leapOffset = 0;
+                var leapMonth = this.leapMonth(y);
+                var leapDay = this.leapDays(y);
+                if (isLeapMonth && (leapMonth != m)) { return -1; }//传参要求计算该闰月公历 但该年得出的闰月与传参的月份并不同
+                if (y == 2100 && m == 12 && d > 1 || y == 1900 && m == 1 && d < 31) { return -1; }//超出了最大极限值
+                var day = this.monthDays(y, m);
+                var _day = day;
+                //bugFix 2016-9-25
+                //if month is leap, _day use leapDays method
+                if (isLeapMonth) {
+                    _day = this.leapDays(y, m);
+                }
+                if (y < 1900 || y > 2100 || d > _day) { return -1; }//参数合法性效验
+
+                //计算农历的时间差
+                var offset = 0;
+                for (var i = 1900; i < y; i++) {
+                    offset += this.lYearDays(i);
+                }
+                var leap = 0, isAdd = false;
+                for (var i = 1; i < m; i++) {
+                    leap = this.leapMonth(y);
+                    if (!isAdd) {//处理闰月
+                        if (leap <= i && leap > 0) {
+                            offset += this.leapDays(y); isAdd = true;
+                        }
+                    }
+                    offset += this.monthDays(y, i);
+                }
+                //转换闰月农历 需补充该年闰月的前一个月的时差
+                if (isLeapMonth) { offset += day; }
+                //1900年农历正月一日的公历时间为1900年1月30日0时0分0秒(该时间也是本农历的最开始起始点)
+                var stmap = Date.UTC(1900, 1, 30, 0, 0, 0);
+                var calObj = new Date((offset + d - 31) * 86400000 + stmap);
+                var cY = calObj.getUTCFullYear();
+                var cM = calObj.getUTCMonth() + 1;
+                var cD = calObj.getUTCDate();
+
+                return this.solar2lunar(cY, cM, cD);
+            }
+        };
+    </script>
+
+
+
+    <script>//将数据存储在浏览器localStorage  
+
+        //将数据存储在浏览器localStorage  
+        // 数据格式： todoList:[{"li":inputContent,"status":true/false}]
+        // 打开浏览器时，从浏览器中读取数据、显示数据
+        //触发post时：1、从浏览器读取数据，新增数据，将数据写回浏览器  2、在页面上新增一条内容
+        //修改数据：1、从浏览器读取数据，修改数据，将数据写回浏览器  页面显示
+        //删除数据:1、从浏览器读取数据，删除数据，将数据写回浏览器  页面显示
+        //todo>>>>done:读取数据，修改状态为true，写回浏览器，
+        //done>>>>todo：读取数据，修改状态为true，写回浏览器，  在todo里面增加一条内容
+
+
+        //清除所有
+        function clear() {
+            localStorage.clear();
+            location.reload();
+            // showList();
+        }
+        //浏览器页面显示列表
+        function showList() {
+
+            var todoList = document.getElementById("todoList");
+            var todoCount = document.getElementById("todoCount");
+            var data = localStorage.getItem("todoList");
+            var todoList1 = "";
+            var count1 = 0;
+            if (data != null) {
+                data = JSON.parse(data);
+                for (var i = 0; i < data.length; i++) {
+                    // console.log(data);
+                    todoList1 += "<li id='li-" + i + "'><p style='float:left;'>" + (i + 1) + ".&nbsp&nbsp</p><input class='content1' type='text' style='float:left;' id='note" + i + "' value=" + data[i].note + " onchange='update(" + i + ")'></input><input class='content2' type='date' style='float:left;' id='date" + i + "' onchange=update_date(" + i + ") value=" + data[i].date + " ></input><input class='content3' type='time' style='float:left;' id='time" + i + "' onchange=update_time(" + i + ") value=" + data[i].time + " ></input>" +
+                        "<span class='listSpan' style='float:right;' onclick=remove(" + i + ")>" + "-</span></li>";
+                    count1++;
+                    // todoCount= Number(todoCount.innerText);
+                }
+                todoList.innerHTML = todoList1;
+                todoCount.innerText = count1;
+            } else {
+                todoList.innerHTML = "";
+                todoCount.innerText = 0;
+
+            }
+
+        }
+
+        //编辑
+        function update(n) {
+            var data = loadData();
+            var newItem = document.getElementById("note" + new String(n));  //被修改的数据
+            console.log(data[n]);
+            console.log(newItem);
+            data[n].note = newItem.value;
+            saveData(data);
+            showList();
+        }
+
+        //编辑
+        function update_time(n) {
+            var data = loadData();
+            var newItem = document.getElementById("time" + new String(n));  //被修改的数据
+            console.log(data[n]);
+            console.log(newItem);
+            data[n].time = newItem.value;
+            data[n].date = "";
+            saveData(data);
+            showList();
+        }
+
+
+        //编辑
+        function update_date(n) {
+            var data = loadData();
+            var newItem = document.getElementById("date" + new String(n));  //被修改的数据
+            console.log(data[n]);
+            console.log(newItem);
+            data[n].date = newItem.value;
+            data[n].time = "";
+            saveData(data);
+            showList();
+        }
+
+
+        //删除
+        function remove(n) {
+            var data = loadData();
+            data.splice(n, 1);
+            saveData(data);
+            showList();
+        }
+
+        //保存数据
+        function saveData(data) {
+            data = JSON.stringify(data);
+            localStorage.setItem("todoList", data);
+            // console.log("sava",JSON.parse(localStorage.getItem("todoList")));
+        }
+        //读取数据
+        function loadData() {
+            var data = localStorage.getItem("todoList");
+            var emptyArray = [];
+            // console.log(data);
+            if (data == null) {
+                // console.log(2);
+                return emptyArray;
+            } else {
+                // console.log(1);
+                return JSON.parse(data);
+            }
+        }
+
+        //提交表单
+        function postaction() {
+            // localStorage.clear();
+            var inputTodo = document.getElementById("inputTodo");
+            if (inputTodo.value == "") {
+                alert("内容不能为空");
+            } else {
+                //读取数据
+                var data = loadData("todoList");
+                // console.log(data);
+                // console.log(typeof data);
+                var todo = { "note": inputTodo.value, "date": "", "time": "", "status": false };
+                //新增
+                data.push(todo);
+                // console.log("push", data);
+                // 保存
+                saveData(data);
+                var form = document.getElementById("form");
+                form.reset();
+                //页面新增数据
+                showList();
+            }
+        }
+
+        var test222;
+        function update_checkbox(tag) {
+            test222 === 1111;
+
+            var data = loadData_checkbox(tag);
+            var newItem = document.getElementById(new String(tag));  //被修改的数据
+            data = newItem.checked;
+            saveData_checkbox(tag, data);
+
+        }
+
+        function saveData_checkbox(tag, data) {
+            localStorage.setItem(tag, data == true ? "true" : "");
+        }
+
+
+        function loadData_checkbox(tag, defalut_value = true) {
+            var data = localStorage.getItem(tag);
+            var emptyString = "";
+            if (data == null || data == "") {
+                return defalut_value;
+            } else {
+                return data;
+            }
+        }
+
+
+
+
+        var weather_code2letter = function (code) {
+            return code2letter[code];
+        }
+
+
+        var weathertext_transfer = function (text1, text2) {
+            if (text1 == text2)
+                return text1;
+            else if (text1 == "" || text2 == "")
+                return text1 + text2;
+            else
+                return text1 + "转" + text2;
+        }
+
+
+
+
+
+        // setInterval(() => {
+        //     getData();
+        // }, 1000);
+        // function getData() {
+        //     var xhttp = new XMLHttpRequest();
+        //     xhttp.onreadystatechange = function () {
+        //         if (this.readyState == 4 && this.status == 200) {
+        //             console.log(this.responseText);
+        //             document.getElementById("data").innerHTML = this.responseText;
+        //         }
+        //     }
+        //     xhttp.open("GET", "/getData");
+        //     xhttp.send();
+        // }
+        function sendData(stringsend) {
+            console.log("button clicked");
+            var xhttp = new XMLHttpRequest();
+            xhttp.open("POST", "/sendData");
+            xhttp.setRequestHeader("Content-type", "text/plain");
+            xhttp.send(stringsend);
+            xhttp.onreadystatechange = function () {
+                if (xhttp.readyState == 4 && xhttp.status == 200) {
+                    var r = xhttp.responseText;
+                    document.getElementById("content_status2").value = r;
+
+                }
+            }
+
+        }
+
+        var btn2 = document.getElementById('button_send');
+        btn2.addEventListener('click', function () {
+            // a = new Blob[loadData_set("sendjson")];
+            // console.log(a);
+            send_str = new Uint8Array(new TextEncoder("utf-8").encode(loadData_set("sendjson")));
+            console.log(send_str);
+            sendCommand(send_str);
+            addLog("Ble send data size:  " + send_str.length);
+            // sendData(loadData_set("sendjson"));//webserver
+        })
+
+
+        var btn3 = document.getElementById('button_send_qrcode');
+        btn3.addEventListener('click', function () {
+            var qrcodetemp = loadData_set("qrcode");
+            if (document.getElementById("page_select_qrcode_id").checked) {
+                if (Object.keys(qrcodetemp).length > 0)
+                    qrcodetemp = qrcodetemp;
+                else { qrcodetemp = {}; }
+
+                var string1temp = loadData_set("string1");
+                if (Object.keys(string1temp).length > 0)
+                    string1temp = string1temp;
+                else { string1temp = {}; }
+
+                var string2temp = loadData_set("string2");
+                if (Object.keys(string2temp).length > 0)
+                    string2temp = string2temp;
+                else { string2temp = {}; }
+
+                var qrtemp = {};
+                if (qrcodetemp.length > 0) {
+                    qrtemp["qrstring"] = qrcodetemp;
+                    strtemp = new Uint8Array(new TextEncoder("utf-8").encode(qrcodetemp));
+                    addLog("qrcode size : " + strtemp.length);
+                }
+                if (string1temp.length > 0)
+                    qrtemp["string1"] = string1temp;
+                if (string2temp.length > 0)
+                    qrtemp["string2"] = string2temp;
+            }
+            var sendjson = {};
+            sendjson.qrcode = qrtemp;
+
+            saveData_set("sendjson", JSON.stringify(sendjson));
+            // document.getElementById("test").innerText = JSON.stringify(sendjson);
+            addLog(JSON.stringify(sendjson));
+
+            send_str = new Uint8Array(new TextEncoder("utf-8").encode(loadData_set("sendjson")));
+            console.log(send_str);
+            sendCommand(send_str);
+            addLog("Ble send data size:  " + send_str.length);
+            // sendData(loadData_set("sendjson"));//webserver
+        })
+
+
+    </script>
+    <script>
+        var UID = 'PNlRVktNP_n2pAirU'; // 测试用 用户ID，请更换成您自己的用户ID
+        var KEY = "SKIgElmlVSR6qAjSc"; // 测试用key，请更换成您自己的 Key
+        var API = "http://api.seniverse.com/v3/weather/daily.json"; // 获取天气实况
+        var LOCATION = loadData_set("city", "深圳"); // 除拼音外，还可以使用 v3 id、汉语等形式
+
+        var code2letter = {
+            "0": "1", "1": "1", "2": "1", "3": "2", "4": "3", "5": "3", "6": "3", "7": "3", "8": "3", "9": "5", "10": "8", "11": "6", "12": "6", "13": "7", "14": "8", "15": "8", "16": "8", "17": "8", "18": "8", "19": "$", "20": '"', "21": "#", "22": '"', "23": "#", "24": "#",
+            "25": "#", "26": "E", "27": "E", "28": "F", "29": "F", "30": "M", "31": "L", "37": "G", "38": "1", "99": ")"
+        };
+
+        var sendstring = "";
+
+        // 获取当前时间戳
+        var ts = Math.floor((new Date()).getTime() / 1000);
+        // 构造验证参数字符串
+        var str = "ts=" + ts + "&uid=" + UID;
+
+        // 使用 HMAC-SHA1 方式，以 API 密钥（key）对上一步生成的参数字符串（raw）进行加密
+        // 并将加密结果用 base64 编码，并做一个 urlencode，得到签名 sig
+        var sig = CryptoJS.HmacSHA1(str, KEY).toString(CryptoJS.enc.Base64);
+        sig = encodeURIComponent(sig);
+        str = str + "&sig=" + sig;
+
+
+
+        // 构造最终请求的 url
+        var url = API + "?location=" + LOCATION + "&" + str + "&callback=jsonpCallbackweather";
+
+
+        var jsonpCallbackweather = function (data) {
+            var obj = document.getElementById('content');
+            var weather = data.results[0];
+
+            weathertemp = { "city": weather.location.name, "weather": weathertext_transfer(weather.daily[0].text_day, weather.daily[0].text_night), "temperature": weather.daily[0].low + '\/' + weather.daily[0].high + '℃', "wid_day": weather_code2letter(weather.daily[0].code_day), "wid_night": weather_code2letter(weather.daily[0].code_night) };
+            console.log(weathertemp);
+
+        }
+
+    </script>
+    <script>
+        /******** 本示例仅做开发参考使用，不建议在生产环境下暴露 key！ ********/
+
+        function formatDate(date) {
+            var y = date.getFullYear();
+            var m = date.getMonth() + 1;
+            m = m < 10 ? ('0' + m) : m;
+            var d = date.getDate();
+            d = d < 10 ? ('0' + d) : d;
+            var h = date.getHours();
+            var minute = date.getMinutes();
+            minute = minute < 10 ? ('0' + minute) : minute;
+            var second = date.getSeconds();
+            second = minute < 10 ? ('0' + second) : second;
+            return y + '-' + m + '-' + d;
+        }
+
+
+        var weathertemp;
+        var btn1 = document.getElementById('button_ok');
+        btn1.addEventListener('click', function () {
+
+            if (document.getElementById("city_select").checked) {
+                LOCATION = loadData_set("city", "深圳");
+                url = API + "?location=" + LOCATION + "&" + str + "&callback=jsonpCallbackweather";
+                // 向 HTML 中动态插入 script 标签，通过 JSONP 的方式进行调用
+                var newScript = document.createElement('script');
+                newScript.type = 'text/javascript';
+                newScript.src = url;
+                document.body.appendChild(newScript);
+
+                newScript.addEventListener('load', function () {
+                    // 过河拆桥
+                    document.body.removeChild(newScript);
+                })
+
+            }
+
+            var datetemp;
+            if (document.getElementById("today_select").checked) {
+                strTime = new Date();
+                datetemp = formatDate(strTime);
+                document.getElementById('date').value = datetemp;
+                datetemp = datetemp.split("-");
+            }
+            else {
+                datetemp = loadData_set("date").split("-");
+            }
+            var datetemp = calendar.solar2lunar(datetemp[0], datetemp[1], datetemp[2]);
+            var datejson = { "lunarYear": datetemp.gzYear + "年", "lunar": datetemp.IMonthCn + datetemp.IDayCn, "weekday": datetemp.ncWeek, "month": datetemp.cMonth, "day": (datetemp.cDay < 10 ? "0" : null) + datetemp.cDay }
+
+
+            var note = loadData();
+            var content = noteconvent(note);
+
+            function noteconvent(notelist) {
+                var content = [];
+                if (notelist.length == 0)
+                    return content;
+                else {
+                    for (var i = 0; i < notelist.length; i++) {
+                        content[i] = { "content": notelist[i]["note"], "date": notelist[i]["date"].slice(-5) + notelist[i]["time"] };
+                    }
+                    return content;
+                }
+
+            }
+
+            var logotemp = loadData_set("logo");
+            if (Object.keys(logotemp).length > 0)
+                logotemp = { "textbottom": logotemp };
+            else { logotemp = {}; }
+
+
+            // { qrstring, string1, string2 };
+
+            var sendjson = {};
+
+            setTimeout(function () {
+
+                if (document.getElementById("page_select_notelist_id").checked) {
+                    if (content.length > 0)
+                        sendjson.notes = content;
+                    if (document.getElementById("date_select").checked)
+                        sendjson.datevalue = datejson;
+                    if (document.getElementById("city_select").checked) {
+                        sendjson.weathervalue = weathertemp;
+                        document.getElementById("content_status").value = 'Weather is OK!!!';
+                    }
+                    if (Object.keys(logotemp).length > 0)
+                        sendjson.textlabel = logotemp;
+                }
+                // if (Object.keys(qrtemp).length > 0)
+                // sendjson.qrcode = qrtemp;
+
+                // if (Object.keys(qrtemp).length > 0)
+                else if (document.getElementById("page_select_qrcode_id").checked) {
+                    sendjson.qrcode = qrtemp;
+                }
+
+                saveData_set("sendjson", JSON.stringify(sendjson));
+                // document.getElementById("test").innerText = JSON.stringify(sendjson);
+                addLog(JSON.stringify(sendjson));
+                if (document.getElementById("city_select").checked) {
+                    console.log("等待天气信息返回");
+                }
+            }, (document.getElementById("city_select").checked) ? 500 : 0);
+        })
+
+
+
+
+
+    </script>
+
+
+    <script>//onlod
+
+        document.body.onload = () => {
+
+            epd_info = loadData_set("epd_model_info", epd_EPD420Z96);
+            epd = structuredClone(epd_info);
+            document.getElementById("epd_model").value = epd.model;
+            document.getElementById("rotate_id").value = epd.rotationSet;
+            dithering_select = loadData_set("dithering_select", "level");
+            document.getElementById("dithering").value = dithering_select;
+            threshold_set = loadData_set("threshold_set", 125);
+            document.getElementById("threshold").value = threshold_set;
+
+            page_select_value = loadData_set("page_select", "page_select_image");
+
+            // epd_str2model(model_str);
+            // epd = structuredClone(epd_EPD154C1);
+            console.log(epd);
+
+            page_select_load(page_select_value);
+
+            update_image();
+            page_select();
+            // canvas_inti();
+
+            showList();
+            document.getElementById("date").value = loadData_set("date");
+            document.getElementById("city").value = loadData_set("city", "深圳");
+            document.getElementById("logo").value = loadData_set("logo", "X Z C R A Z Y");
+            document.getElementById("today_select").checked = loadData_checkbox("today_select");
+            document.getElementById("date_select").checked = loadData_checkbox("date_select");
+            document.getElementById("city_select").checked = loadData_checkbox("city_select");
+            // document.getElementById("qrcode_select").checked = loadData_checkbox("qrcode_select");
+            document.getElementById("qrcode").value = loadData_set("qrcode");
+            document.getElementById("string1").value = loadData_set("string1");
+            document.getElementById("string2").value = loadData_set("string2");
+
+            const ndef = new NDEFReader();
+            try {
+                ndef.write({
+                    records: [{ recordType: "url", data: "https://w3c.github.io/web-nfc/" }]
+                });
+            } catch {
+                console.log("Write failed :-( try again.");
+                addLog("Write failed :-( try again.");
+            };
+            addLog(records);
+        }
+    </script>
+</body>
+
+</html>
